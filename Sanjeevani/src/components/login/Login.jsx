@@ -1,11 +1,27 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Login = () => {
+  const [currentImage, setCurrentImage] = useState("Doctor.png");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Update the currentImage state to switch between images
+      setCurrentImage((prevImage) => (prevImage === "Doctor.png" ? "Mobile.jpeg" : "Doctor.png"));
+    }, 5000);
+
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, []);
   return (
     <>
       <div className="flex flex-row h-screen">
         <div className="w-1/4">
-          <img className="h-full w-full" src="./Doctor.png" alt="" />
+        <img
+            className="transition-opacity duration-1000 ease-in-out opacity-100"
+            src={(`./${currentImage}`)}
+            alt=""
+          />
         </div>
         <div className="flex flex-col justify-center items-center w-3/4 mt-[-20px] ">
           <div className="flex justify-center mb-12 mt-[-10px]">
