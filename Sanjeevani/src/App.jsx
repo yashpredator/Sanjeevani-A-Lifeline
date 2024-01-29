@@ -8,12 +8,13 @@ import './App.css';
 import Login from './components/login/Login';
 import Signup from './components/Signup/Signup';
 import Home from './components/home/Home';
+import DocProf from './components/docprofile/DocProf';
 
 
 function App() {
   return (
     <>
-      <Home/>
+      <DocProf/>
     </>
   );
 }
