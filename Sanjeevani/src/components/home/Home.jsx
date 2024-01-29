@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Cards from './Cards';
 import NearYou from './NearYou';
 import Docarray from './Docarray';
+import Footer from './Footer';
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
     <Cards/>
     <NearYou/>
     <Docarray/>
+    <Footer/>
     </div>
     </>
     
