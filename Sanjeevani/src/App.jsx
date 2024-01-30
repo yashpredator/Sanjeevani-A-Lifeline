@@ -12,11 +12,15 @@ import DocProf from './components/docprofile/DocProf';
 import PatientNav from './components/Patient/PatientNav';
 
 
+
+
 function App() {
   return (
+
   <>
   <PatientNav/>
   </>
+   
    
   );
 }
