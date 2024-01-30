@@ -10,6 +10,7 @@ import Signup from './components/Signup/Signup';
 import Home from './components/home/Home';
 import DocProf from './components/docprofile/DocProf';
 import PatientNav from './components/Patient/PatientNav';
+import PatientDetails from './components/Patient/PatientDetails';
 
 
 
@@ -19,6 +20,7 @@ function App() {
 
   <>
   <PatientNav/>
+  <PatientDetails/>
   </>
    
    
