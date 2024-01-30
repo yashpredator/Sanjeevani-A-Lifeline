@@ -46,7 +46,7 @@ function PatientDetails() {
               {" "}
               Heart Patient
             </div>
-            <div className="ml-20 mt-4 rounded-full">
+            <div className="md:ml-20 mt-4 rounded-full mr-28 ml-12">
               <Button className=" rounded-3xl" variant="contained" href="#contained-buttons">
                 Update
               </Button>
@@ -67,7 +67,7 @@ function PatientDetails() {
                />
                <div className="font-thin ml-1 text-sm text-black font-inter md:font-medium md:text-3xl md:mt-2 md:ml-6 flex flex-col">
                  {docs.name}
-                 <div className="md:text-lg md:mt-[-4px] md:font-normal text-sm font-extralight ">
+                 <div className="md:text-lg md:mt-[-4px] md:font-normal text-sm font-extralight mr-9">
                    07/07/11 | 12 PM
                  </div>
                  <div className="md:text-lg font-serif text-sm font-thin">
