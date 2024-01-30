@@ -19,7 +19,7 @@ function App() {
   return (
 
   <>
-  <PatientNav/>
+  
   <PatientDetails/>
   </>
    
