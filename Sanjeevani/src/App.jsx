@@ -4,15 +4,48 @@ import React from 'react';
 // import { Route } from 'react-router-dom';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
+import ReactDOM from 'react-dom/client'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+
 import './App.css';
 import Login from './components/login/Login';
-import Signup from './components/Signup/Signup';
+import Landing from './components/Landing/Landing';
 import Home from './components/home/Home';
 import DocProf from './components/docprofile/DocProf';
 import PatientNav from './components/Patient/PatientNav';
 import PatientDetails from './components/Patient/PatientDetails';
 import Booking from './components/Booking/Booking';
 
+const router = createBrowserRouter([
+  {
+    path: "",
+    element: <Landing/>,
+
+    
+  },
+    {
+      path: "login",
+      element: <Login/>
+    },
+    {
+      path: "home",
+      element: <Home />
+    },
+    {
+      path:"PatientDetails",
+      element:<PatientDetails/>
+    },
+    {
+      path: "Doctors",
+      element:<DocProf/>
+    },
+
+  {
+    path: "Book-your-doctor",
+    element: <Booking/>
+  }
+   
+]);
 
 
 
@@ -20,8 +53,8 @@ function App() {
   return (
 
   <>
-  
-    <Booking/>
+
+  <RouterProvider router={router} />
   </>
    
    
