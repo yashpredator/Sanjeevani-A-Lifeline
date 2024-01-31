@@ -11,6 +11,7 @@ import Home from './components/home/Home';
 import DocProf from './components/docprofile/DocProf';
 import PatientNav from './components/Patient/PatientNav';
 import PatientDetails from './components/Patient/PatientDetails';
+import Booking from './components/Booking/Booking';
 
 
 
@@ -20,7 +21,7 @@ function App() {
 
   <>
   
-  <PatientDetails/>
+    <Booking/>
   </>
    
    

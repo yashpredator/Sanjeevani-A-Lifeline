@@ -7,6 +7,7 @@ const Routes = () => {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<DocProf/>}/>
+        
       </Routes>
       </BrowserRouter>
     </div>
