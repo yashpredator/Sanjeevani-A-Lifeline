@@ -16,7 +16,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 const pages = ["Doctors Login", "Our Services", "About Us"];
 const settings = ["Profile", "Dashboard", "Logout"];
 
-function Signup() {
+function Landing() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -220,4 +220,4 @@ function Signup() {
     </>
   );
 }
-export default Signup;
+export default Landing;
