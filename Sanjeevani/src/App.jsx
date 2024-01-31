@@ -30,7 +30,21 @@ const router = createBrowserRouter([
     {
       path: "home",
       element: <Home />
-    }
+    },
+    {
+      path:"PatientDetails",
+      element:<PatientDetails/>
+    },
+    {
+      path: "Doctors",
+      element:<DocProf/>
+    },
+
+  {
+    path: "Book-your-doctor",
+    element: <Booking/>
+  }
+   
 ]);
 
 
@@ -39,8 +53,8 @@ function App() {
   return (
 
   <>
-  
-  <PatientDetails/>
+
+  <RouterProvider router={router} />
   </>
    
    
