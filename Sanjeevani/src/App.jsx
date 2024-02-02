@@ -15,6 +15,7 @@ import DocProf from './components/docprofile/DocProf';
 import PatientNav from './components/Patient/PatientNav';
 import PatientDetails from './components/Patient/PatientDetails';
 import Booking from './components/Booking/Booking';
+import Doctorreg from './components/doctorreg/Doctorreg';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ const router = createBrowserRouter([
   {
     path: "Book-your-doctor",
     element: <Booking/>
-  }
+  },
+  {
+    path: "Doc-Reg",
+    element: <Doctorreg/>
+  },
    
 ]);
 
@@ -53,7 +58,7 @@ function App() {
   return (
 
   <>
-
+  
   <RouterProvider router={router} />
   </>
    
