@@ -16,6 +16,7 @@ import PatientNav from './components/Patient/PatientNav';
 import PatientDetails from './components/Patient/PatientDetails';
 import Booking from './components/Booking/Booking';
 import Doctorreg from './components/doctorreg/Doctorreg';
+import Disease from './components/Disease/Disease';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
     path: "Doc-Reg",
     element: <Doctorreg/>
   },
+  {
+    path: "Disease",
+    element: <Disease/>
+  }
    
 ]);
 
