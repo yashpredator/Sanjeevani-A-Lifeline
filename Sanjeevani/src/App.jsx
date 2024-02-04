@@ -17,6 +17,8 @@ import PatientDetails from './components/Patient/PatientDetails';
 import Booking from './components/Booking/Booking';
 import Doctorreg from './components/doctorreg/Doctorreg';
 import Disease from './components/Disease/Disease';
+import Footer from './components/home/Footer';
+import Profile from './components/DocPersonal/Profile';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "Disease",
     element: <Disease/>
+  },
+  {
+    path: "Doctor-Profile",
+    element: <Profile/>
   }
    
 ]);
@@ -65,6 +71,7 @@ function App() {
   <>
   
   <RouterProvider router={router} />
+  
   </>
    
    

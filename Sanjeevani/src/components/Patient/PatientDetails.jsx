@@ -13,6 +13,22 @@ function PatientDetails() {
       src: "./Images/YoungMan.png",
     },
     {
+        name: "Sourav",
+        //   lastname: "Kumar",
+        date:"17/12/2001 | 05:00",
+        
+        specialist: "Neuroscience",
+        src: "./Images/YoungMan.png",
+      },
+      {
+        name: "Sourav",
+        //   lastname: "Kumar",
+        date:"17/12/2001 | 05:00",
+        
+        specialist: "Neuroscience",
+        src: "./Images/YoungMan.png",
+      },
+    {
       name: "Yashraj",
       //   lastname: "Kumar",
       date:"17/12/2001 | 05:00",
