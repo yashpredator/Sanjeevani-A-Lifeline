@@ -1,8 +1,21 @@
 import React from "react";
-import { Button } from "@mui/material";
+import { Button, Popover, Rating, Stack, Typography } from "@mui/material";
 import Reviews from "./Reviews";
 
 const DocProf = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
   return (
     <>
       <div className="bg-gradient-to-r from-violet-800 to-blue-900 ">
@@ -35,14 +48,61 @@ const DocProf = () => {
           </div>
           <div className="ml-7 flex flex-row">
             <div className="p-3">
-              <Button className=" rounded-3xl" variant="contained" href="#contained-buttons">
+              <Button
+                className=" rounded-3xl"
+                variant="contained"
+                href="#contained-buttons"
+              >
                 Book Now
               </Button>
             </div>
             <div className="p-3">
-              <Button variant="contained" href="#contained-buttons">
+              <Button
+                aria-describedby={id}
+                variant="contained"
+                onClick={handleClick}
+              >
                 Rate Now
               </Button>
+              <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+              >
+                {/* The content of the popover */}
+                <div className="sm:w-96 rounded-3xl w-72">
+                  <div>
+                    <img src="./Images/reviewcover.png" alt="No cover" />
+                  </div>
+                  <div className="flex flex-row justify-center">
+
+                    <Rating className="mt-2" name="size-large" defaultValue={2} size="large" />
+                  </div>
+                  <div className=" p-2">
+                    <textarea
+                      className="w-full p-2 h-32 border-2 rounded-lg"
+                      placeholder="Write a review"
+                    >
+                      Yashraj
+                    </textarea>
+                  </div>
+                  <div className="px-2 flex flex-row justify-end mb-2"> 
+                    <Button
+                      className=" rounded-3xl"
+                      variant="contained"
+                      href="#contained-buttons"
+                      onClick={handleClose}
+                    >
+                      Submit
+                    </Button>
+                  </div>
+                </div>
+              </Popover>
             </div>
           </div>
         </div>
@@ -50,7 +110,7 @@ const DocProf = () => {
           <img src="./Images/doctoronprofile.png" />
         </div>
       </div>
-      <Reviews/>
+      <Reviews />
     </>
   );
 };
