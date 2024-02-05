@@ -1,7 +1,22 @@
 import React from "react";
 import DocNav from "./DocNav";
+import { Popover, Typography } from "@mui/material";
+
 
 const Profile = () => {
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
   const doctor = [
     {
       name: "Sourav",
@@ -80,11 +95,11 @@ const Profile = () => {
     <>
       <DocNav />
       <div className="flex flex-row justify-around  p-5 bg-pink-400 ">
-        <div className="w-5/12 bg-cyan-500 h-fit rounded-3xl sm:mt-5 mt-5">
-          <div className="bg-white p-3 rounded-3xl">
+        <div className="w-5/12 bg-white  rounded-3xl sm:mt-5 mt-5 ">
+          <div className=" h-fit p-3 rounded-3xl flex flex-col justify-around">
             <div className="flex justify-center">
               <img
-                className="size-4/6 rounded-3xl"
+                className="size-5/6 rounded-3xl mt-7"
                 src="./Images/YoungMan.png"
                 alt="No profile pic"
               ></img>
@@ -140,8 +155,32 @@ const Profile = () => {
                </div>
                
                <div className="flex flex-row">
-                 <div className="flex flex-col justify-center mr-8"><img src="./Images/message.png" alt="No message" /></div>
+                 <div className="flex flex-col justify-center mr-8"><img onClick={handleClick} src="./Images/message.png" alt="No message" />
+                 <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+      >
+      <div className="flex flex-col sm:w-60 sm:h-60 w-24 h-24 rounded-full">
+        <div className="w-full h-2/6 bg-blue-600">
+          <div className="sm:mt-8 ml-1 mb-1 sm:font-bold text-white sm:text-xl font-normal text-xs mt:1">Patient Record</div>
+        </div>
+        <div className="sm:mt-2 mr-1 ml-1 mb-1 mt-0 overflow-auto text-wrap">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          Nam mollitia tempore vel deserunt praesentium eos quis amet magnam delectus nisi eveniet accusantium impedit rerum temporibus, 
+          autem veniam illum recusandae hic?
+        </div>
+
+      </div>
+      </Popover>
+                 </div>
                  <div className="flex flex-col justify-center"><img className="h-[35%]" src="./Images/arrow.png" alt="No arrow"/></div>
+    
                </div>
                
              </div>
