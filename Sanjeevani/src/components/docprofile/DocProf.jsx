@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Popover, Rating, Stack, Typography } from "@mui/material";
 import Reviews from "./Reviews";
+import Booking from "../Booking/Booking";
 
 const DocProf = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -20,11 +21,11 @@ const DocProf = () => {
     <>
       <div className="bg-gradient-to-r from-violet-800 to-blue-900 ">
         <div className="flex flex-row">
-          <div className=" mt-2 ml-3 size-14">
-            <img src="./Images/whitelogo.png" alt="No logo" />
+          <div className=" mt-2 ml-3 size-14 hover:cursor-pointer">
+            <img src="./Images/whitelogo.png" alt="No logo" onClick={()=>{window.location.href = '/Home';}} />
           </div>
           <div className=" ml-3 mt-5 size-40">
-            <img src="./Images/whitesanjeevani.png" />
+            <img src="./Images/whitesanjeevani.png" onClick={()=>{window.location.href = '/Home';}}/>
           </div>
         </div>
         <div className="text-white text-5xl p-2 font-serif">
@@ -52,6 +53,8 @@ const DocProf = () => {
                 className=" rounded-3xl"
                 variant="contained"
                 href="#contained-buttons"
+
+                onClick={()=>{window.location.href = '/Book-your-doctor';}}
               >
                 Book Now
               </Button>

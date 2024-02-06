@@ -45,12 +45,13 @@ function PatientNav() {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-            <div className="flex flex-row">
+            <div className="flex flex-row hover:cursor-pointer">
               {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, ml: 4 }} /> */}
               <img
                 className="size-2/4 mb-4 ml-7 mt-3"
                 src="./logosan.png"
                 alt="No image"
+                onClick={()=>{window.location.href = '/Home';}}
               />
               <Typography
                 variant="h6"
@@ -69,9 +70,10 @@ function PatientNav() {
               >
                 {/* Sanjeevani */}
                 <img
-                  className="w-3/6 h-3/6 translate-x-5 mt-6"
+                  className="w-3/6 h-3/6 translate-x-5 mt-6 hover:cursor-pointer"
                   src="./Sanjeevani.png"
                   alt="No image"
+                  onClick={()=>{window.location.href = '/Home';}}
                 />
               </Typography>
               {/* Insert the new Typography component here */}

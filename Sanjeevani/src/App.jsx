@@ -19,6 +19,8 @@ import Doctorreg from './components/doctorreg/Doctorreg';
 import Disease from './components/Disease/Disease';
 import Footer from './components/home/Footer';
 import Profile from './components/DocPersonal/Profile';
+import NearYou from './components/home/NearYou';
+
 
 const router = createBrowserRouter([
   {
@@ -33,7 +35,9 @@ const router = createBrowserRouter([
     },
     {
       path: "home",
-      element: <Home />
+      element: <Home />,
+
+     
     },
     {
       path:"PatientDetails",
@@ -59,7 +63,12 @@ const router = createBrowserRouter([
   {
     path: "Doctor-Profile",
     element: <Profile/>
-  }
+  },
+  // {
+  //   path: "Booking",
+  //   element:<Booking/>
+    
+  // }
    
 ]);
 

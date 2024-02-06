@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-
+import Home from "../home/Home";
 const Login = () => {
   const [currentImage, setCurrentImage] = useState("Doctor.png");
 
@@ -24,16 +24,18 @@ const Login = () => {
           />
         </div>
         <div className="flex flex-col justify-center items-center w-3/4 mt-[-20px] ">
-          <div className="flex justify-center mb-12 mt-[-10px]">
+          <div className="flex justify-center mb-12 mt-[-10px] hover:cursor-pointer" onClick={()=>{window.location.href = '/Home';}}>
             <div className="w-1/6 mr-3 mt-[-110px]">
               <img src="./logosan.png" alt="No image" />
             </div>
 
             <div>
               <img
-                className="mt-[-98px]"
+                className="mt-[-98px] hover:cursor-pointer"
                 src="./Sanjeevani.png"
                 alt="No image"
+
+                onClick={()=>{window.location.href = '/Home';}}
               />
             </div>
           </div>
@@ -74,7 +76,7 @@ const Login = () => {
   <div className="flex items-center justify-center mt-7">
     <button
       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
-      type="button"
+      type="button" onClick={()=>{window.location.href = '/Home';}}
     >
       Log In
     </button>

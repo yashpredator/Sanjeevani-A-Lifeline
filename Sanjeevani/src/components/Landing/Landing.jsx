@@ -12,11 +12,16 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Login from "../login/Login";
+
 
 const pages = ["Doctors Login", "Our Services", "About Us"];
 const settings = ["Profile", "Dashboard", "Logout"];
 
 function Landing() {
+  
+
+  
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -49,9 +54,11 @@ function Landing() {
               <div>
                 {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, ml: 4 }} /> */}
                 <img
-                  className="size-12 ml-7 mt-1"
+                  className="size-12 ml-7 mt-1 hover:cursor-pointer"
                   src="./logosan.png"
                   alt="No image"
+                  onClick={()=>{window.location.href = '/Home';}}
+                  
                 />
                 <Typography
                   variant="h6"
@@ -70,9 +77,12 @@ function Landing() {
                 >
                   {/* Sanjeevani */}
                   <img
-                    className="w-1/4 ml-0 mt-1"
+                    className="w-1/4 ml-0 mt-1 hover:cursor-pointer"
                     src="./Sanjeevani.png"
                     alt="No image"
+                    onClick={()=>{window.location.href = '/Home';}}
+
+
                   />
                 </Typography>
               </div>
@@ -196,9 +206,7 @@ function Landing() {
           <div className='flex flex-row '>
             <button
             className="absolute bg-gradient-to-r from-blue-900 to-blue-400 top-3/4 left-40 ml-5 transform -translate-x-1/2 -translate-y-1/2  bg-blue-500 text-white py-2 px-5 rounded-full"
-            onClick={() => {
-              // Handle login button click here
-            }}
+            onClick={()=>{window.location.href = '/Login';}} 
           >
             Login
           </button>

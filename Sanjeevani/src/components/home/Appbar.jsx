@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
+
 const settings = ["Profile", "Dashboard", "Logout"];
 
 function Home() {
@@ -48,9 +49,10 @@ function Home() {
               <div className='flex flex-row'>
                 {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, ml: 4 }} /> */}
                 <img
-                  className="size-2/4 mb-4 ml-7 mt-3"
+                  className="size-2/4 mb-4 ml-7 mt-3 hover:cursor-pointer"
                   src="./logosan.png"
                   alt="No image"
+                  onClick={()=>{window.location.href = '/Home';}}
                 />
                 <Typography
                   variant="h6"
@@ -69,9 +71,10 @@ function Home() {
                 >
                   {/* Sanjeevani */}
                   <img
-                    className="w-3/6 h-3/6 translate-x-5 mt-6"
+                    className="w-3/6 h-3/6 translate-x-5 mt-6 hover:cursor-pointer"
                     src="./Sanjeevani.png"
                     alt="No image"
+                    onClick={()=>{window.location.href = '/Home';}}
                   />
                 </Typography>
               </div>

@@ -6,11 +6,11 @@ const Booking = () => {
     <>
       <div className="bg-gradient-to-r from-violet-800 to-blue-900 ">
         <div className="flex flex-row">
-          <div className=" mt-2 ml-3 size-14">
-            <img src="./Images/whitelogo.png" alt="No logo" />
+          <div className=" mt-2 ml-3 size-14 hover:cursor-pointer">
+            <img src="./Images/whitelogo.png" alt="No logo" onClick={()=>{window.location.href = '/Home';}}/>
           </div>
-          <div className=" ml-3 mt-5 size-40">
-            <img src="./Images/whitesanjeevani.png" />
+          <div className=" ml-3 mt-5 size-40 hover:cursor-pointer">
+            <img src="./Images/whitesanjeevani.png" onClick={()=>{window.location.href = '/Home';}}/>
           </div>
         </div>
         <div className="text-white text-5xl p-2 font-serif">

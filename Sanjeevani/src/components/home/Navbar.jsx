@@ -2,6 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Doctorreg from '../doctorreg/Doctorreg';
+import { Link } from 'react-router-dom';
+import NearYou from './NearYou';
 
 
 export default function CenteredTabs() {
@@ -17,7 +20,7 @@ export default function CenteredTabs() {
       <Tabs className='px-4' value={value} onChange={handleChange} centered>
         <Tab label="Home" />
         <Tab label="Search Doctors" />
-        <Tab label="Near You" />
+        <Tab component={Link} to="/NearYou" label ="Near You" />
         <Tab label="Doctors Login" />
         <Tab label="About Us" />
         

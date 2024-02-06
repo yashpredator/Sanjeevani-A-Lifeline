@@ -10,7 +10,7 @@ const Doctorreg = () => {
     <div className="bg-gradient-to-r from-violet-600 via-white to-violet-300 ">
         
         <div className="flex flex-row h-44 mx-auto items-center justify-center">
-          <div> <img className="h-24 w-11/12" src="./logosan.png" alt="No logo"/></div>
+          <div> <img className="h-24 w-11/12" src="./logosan.png" alt="No logo" /></div>
           <div> <img className="ml-5 h-16" src="./Sanjeevani.png" alt="No image"/> </div>
         </div>
         
