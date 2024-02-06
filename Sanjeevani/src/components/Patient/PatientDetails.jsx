@@ -1,45 +1,65 @@
 import React from "react";
 import { Button } from "@mui/material";
 import PatientNav from "./PatientNav";
+import { Popover, Typography } from "@mui/material";
 
 function PatientDetails() {
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
+  const id = open ? 'simple-popover' : undefined;
   const doctor = [
     {
       name: "Sourav",
-      //   lastname: "Kumar",
-      date:"17/12/2001 | 05:00",
+        lastname: "Kumar",
+      date:"17/12/2001",
+      time: "05:00",
       
       specialist: "Neuroscience",
       src: "./Images/YoungMan.png",
     },
     {
         name: "Sourav",
-        //   lastname: "Kumar",
-        date:"17/12/2001 | 05:00",
+          lastname: "Kumar",
+        date:"17/12/2001",
+        time:"05:00",
         
         specialist: "Neuroscience",
         src: "./Images/YoungMan.png",
       },
       {
         name: "Sourav",
-        //   lastname: "Kumar",
-        date:"17/12/2001 | 05:00",
+          lastname: "Kumar",
+        date:"17/12/2001",
+        time:"05:00",
         
         specialist: "Neuroscience",
         src: "./Images/YoungMan.png",
       },
     {
       name: "Yashraj",
-      //   lastname: "Kumar",
-      date:"17/12/2001 | 05:00",
+        lastname: "Kumar",
+      date:"17/12/2001",
+      time:"05:00",
       
       specialist: "Cardiology",
       src: "./Images/YoungMan.png",
     },
     {
       name: "Tathagat",
-      //   lastname: "Kumar",
-      date:"17/12/2001 | 05:00",
+        lastname: "Kumar",
+      date:"17/12/2001",
+      time:"05:00",
       
       specialist: "Surgeon",
       src: "./Images/YoungMan.png",
@@ -49,62 +69,103 @@ function PatientDetails() {
   return (
     <>
       <PatientNav />
-      <div
-        className="relative flex flex-row mt-10 mb-8 ml-8 mr-8 rounded-r-3xl rounded-b-3xl bg-blue-400"
-        // style={{ backgroundImage: 'url("./Images/Group 15.png")' }}
-      >
-        <div className="relative w-5/12 h-1/12 bg-white ml-10 mt-10 mr-10 mb-10 rounded-3xl">
-          <div className="relative w-6/12 h-1/5 ml-8 mt-8 mr-4 mb-0 md:w-10/12 md:h-1/2 md:ml-8 md:mr-12 md:mt-7 md:mb-7">
-            <img className="h-full w-full rounded-3xl" src="./Images/YoungMan.png" />
-          </div>
-          <div className="flex flex-col">
-            <div className="ml-8 mr-2 text-black font-inter font-bold text-3xl md:ml-20">
-              Sourav Kumar
+      <div className="flex flex-row justify-around  p-5 bg-pink-400 ">
+        <div className="w-5/12 bg-white  rounded-3xl sm:mt-5 mt-5 ">
+          <div className=" h-fit p-3 rounded-3xl flex flex-col justify-around">
+            <div className="flex justify-center">
+              <img
+                className="size-5/6 rounded-3xl mt-7"
+                src="./Images/YoungMan.png"
+                alt="No profile pic"
+              ></img>
             </div>
-            <div className="ml-8 mt-0 text-black font-inter font-light text-3xl md:ml-20 md:mt-3">
-              21 Male
+            <div className="flex justify-center p-3 font-bold font-serif">
+              Dr. Yashraj Srivastava
             </div>
-            <div className="ml-8 mt-0 text-black font-inter font-medium text-xl md:ml-20 md:mt-4">   
-              Heart Patient
+            <div className="flex justify-center p-3 font-thin font-serif text-gray-500">
+              MBBS, MS, MD, PhD
             </div>
-            <div className="md:ml-20 mt-4 rounded-full mr-28 ml-12">
-              <Button
-                className=" rounded-3xl"
-                variant="contained"
-                href="#contained-buttons"
-              >
+            <div className="flex justify-center p-3 font-bold font-serif">
+              <span className="font-thin">ID-</span>
+              <b>SNJ24066998G</b>
+            </div>
+            <div className="flex justify-center p-3  font-serif ">
+              Neurosurgeon
+            </div>
+            <div className="flex justify-center">
+              <button className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold ">
                 Update
-              </Button>
+              </button>
             </div>
           </div>
+        </div>
+        <div className="w-6/12 bg-white rounded-3xl mt-5 ">
+          <div className="font-bold text-2xl p-3 flex flex-row justify-center">Appointments</div>
+          <div className="lg:h-[90vh] h-[70vh] overflow-y-auto">
+        {doctor.map(({name,lastname,date,time,speacialist,src})=>(
+          <div className="flex flex-col mb-3 ">
+           <div className="flex flex-col px-6 ">
+           <div className=" flex flex-row rounded-3xl border-r-8 border-b-8">
+             <div className="flex flex-row justify-between w-full rounded-3xl border-3">
+               <div className="flex flex-row ">
+                 <div className="flex flex-col justify-center size-28 px-3 ">
+                   <img
+                     className="rounded-3xl"
+                     src={src}
+                     alt="No profile"
+                   />
+                 </div>
+                 <div className="flex flex-col justify-center">
+                   <div className="text-xl">
+                     {name} <b className="">{lastname}</b>
+                   </div>
+                   <div className="flex sm:flex-row flex-col">
+                     <div className="mr-1">
+                       <b>{date}</b>
+                     </div>
+                     <div className="text-gray-400">{time}</div>
+                   </div>
+                   <div className="text-gray-700">{speacialist}</div>
+                 </div>
+               </div>
+               
+               <div className="flex flex-row">
+                 <div className="flex flex-col justify-center mr-8"><img onClick={handleClick} src="./Images/message.png" alt="No message" />
+                 <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+      >
+      <div className="flex flex-col sm:w-60 sm:h-60 w-24 h-24 rounded-full">
+        <div className="w-full h-2/6 bg-blue-600">
+          <div className="sm:mt-8 ml-1 mb-1 sm:font-bold text-white sm:text-xl font-normal text-xs mt:1">Patient Record</div>
+        </div>
+        <div className="sm:mt-2 mr-1 ml-1 mb-1 mt-0 overflow-auto text-wrap">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          Nam mollitia tempore vel deserunt praesentium eos quis amet magnam delectus nisi eveniet accusantium impedit rerum temporibus, 
+          autem veniam illum recusandae hic?
         </div>
 
-        <div className="relative w-4/12 md:w-10/12 h-1/12 bg-white ml-10 mt-10 mr-10 mb-10 rounded-3xl flex flex-col" style={{ overflowY: "auto", maxHeight: "600px" }}>
-          <div className="text-sm text-black font-inter font-semibold md:text-3xl mt-3 md:ml-8 ml">
-            Appointments
-          </div>
-          <div className="overflow-y-auto"> 
-          {doctor.map(({name,specialist,src,date}) => (
-            <div className="flex flex-col">
-              <div className=" ml-4 mt-5 w-4/12 rounded:xl h-4/12 flex flex-row bg-slate-300 md:w-11/12 md:h-5/6 md:rounded-3xl md:ml-8 md:mt-8">
-                <img
-                  className="md:rounded-full h-5/6 md:w-24 md:ml-5 mt-4 w-16 ml-1 "
-                  src={src}
-                />
-                <div className="font-thin ml-1 text-sm text-black font-inter md:font-medium md:text-3xl md:mt-2 md:ml-6 flex flex-col">
-                  {name}
-                  <div className="md:text-lg md:mt-[-4px] md:font-normal text-sm font-extralight mr-9">
-                    {date}
-                  </div>
-                  <div className="md:text-lg font-serif text-sm font-thin">
-                    {specialist}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
+      </Popover>
+                 </div>
+                 <div className="flex flex-col justify-center"><img className="h-[35%]" src="./Images/arrow.png" alt="No arrow"/></div>
+    
+               </div>
+               
+             </div>
+           </div>
+         </div>
+         </div>
+        ))}
+        
+         </div>
+        </div>
       </div>
     </>
   );
