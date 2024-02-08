@@ -42,7 +42,7 @@ function Landing() {
 
   return (
     <>
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col">
         <AppBar
           position="static"
           sx={{
