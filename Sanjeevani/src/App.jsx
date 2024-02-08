@@ -22,6 +22,10 @@ import Profile from './components/DocPersonal/Profile';
 import NearYou from './components/home/NearYou';
 
 
+import SignUp from './components/Signup/Signup';
+import UserProfile from './components/UserProfile/UserProfile';
+
+
 const router = createBrowserRouter([
   {
     path: "",
@@ -64,11 +68,15 @@ const router = createBrowserRouter([
     path: "Doctor-Profile",
     element: <Profile/>
   },
-  // {
-  //   path: "Booking",
-  //   element:<Booking/>
-    
-  // }
+
+  {
+    path:"Signup",
+    element:<SignUp/>
+  },
+  {
+    path:"Register",
+    element: <UserProfile/>
+  }
    
 ]);
 
@@ -80,6 +88,8 @@ function App() {
   <>
   
   <RouterProvider router={router} />
+ 
+
   
   </>
    
