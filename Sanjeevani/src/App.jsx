@@ -76,6 +76,10 @@ const router = createBrowserRouter([
   {
     path:"UserProfile",
     element: <UserProfile/>
+  },
+  {
+    path:"NearYou",
+    element:<NearYou/>
   }
    
 ]);
