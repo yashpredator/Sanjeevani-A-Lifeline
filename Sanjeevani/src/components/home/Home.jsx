@@ -17,8 +17,8 @@ const Home = () => {
     </div>
     <Cards/>
     <NearYou/>
-    <Docarray/>
-    <Footer/>
+    <Docarray/> 
+     <Footer/> 
     </div>
     </>
     

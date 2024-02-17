@@ -5,12 +5,22 @@ import SearchIcon from "@mui/icons-material/Search";
 function NearYou() {
   return (
     <>
-      <div className="flex items-center h-screen bg-cover bg-center" style={{ backgroundImage: 'url("./Nurse.png")' }}>
-        
-        <TextField className="-top-1/4 left-[15rem]  bg-slate-400 opacity-75 text-black w-[65vw] rounded-3xl px-4 py-2" 
-        id="outlined-basic" label="Search" variant="outlined" />
-         <img  className="absolute sm: left-[8%] transform  translate-y-56 -translate-x-1/2 lg:translate-x-[15%]" src="./Images/doctorsnearyou.png" alt="Doctors Near You" />
+      <div
+        className="flex items-center h-screen bg-cover"
+        style={{ backgroundImage: 'url("./Nurse1.png")'}}
+      >
+        <div className="flex ml-auto mr-auto w-9/12 sm:mt-[-22%] mt-0 ">
+          <TextField
+            className=" bg-slate-400 opacity-75 text-black rounded-3xl w-full"
+            id="outlined-basic"
+            label="Search"
+            variant="outlined"
+          />
+        </div>
+        {/* <div className="absolute inset-x-[13%] mt-[33%] overflow-auto">
+          <img className="sm:size-1/3 size-[15%] overflow-auto" src="./Images/doctorsnearyou.png"></img>
 
+        </div> */}
       </div>
     </>
   );

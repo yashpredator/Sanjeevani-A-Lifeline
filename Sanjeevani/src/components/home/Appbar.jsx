@@ -126,7 +126,28 @@ function Home() {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <MenuItem key={setting} onClick={()=>{
+                      handleCloseUserMenu();
+                      // Redirect based on the setting
+                      switch (setting) {
+                        case "Profile":
+                          window.location.href = "/PatientDetails";
+                          break;
+                        case "Dashboard":
+                          window.location.href = "/";
+                          break;
+                        case "Logout":
+                          // Perform logout operation, e.g., clearing session or local storage
+                          // Then redirect to the login page
+                          // For demonstration, let's assume direct redirection
+                          window.location.href = "/";
+                          break;
+                        default:
+                          // Handle default case, if necessary
+                          handleCloseUserMenu();
+                          break;
+                      }
+                    }}>
                       <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
                   ))}

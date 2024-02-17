@@ -28,44 +28,51 @@ function Docarray() {
     },
   ];
 
-
-    return (
-      <>
-      {doctor.map((docs)=> (
-
-      
-        <div className="flex flex-col mb-8" key={docs.name}>
-          <div className="mt-[-40px] mb-8">
-            <div className="flex flex-row bg-slate-100 rounded-br-3xl rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl py-4 px-4 ml-44 mr-44">
-              <img className="md:rounded-full h-36 w-36 ml-10" src={docs.src} />
-              <div className="flex flex-col ml-8 ">
-                <div className="mt-2 flex flex-col lg:flex-row  text-black text-5xl font-inter font-light leading-76 break-words ">
-                  <div>{docs.name}</div>
-                  <div className="text-xl hidden text-black sm:text-5xl font-inter font-semibold break-words ml-4 md:block">
-                    {docs.lastname}
-                  </div>
+  return (
+    <>
+      <div className="flex flex-col -mt-[15%]">
+        <div className="p-4 ml-[11%]">
+          <img className="size-[20%]" src="./Images/doctorsnearyou.png" />
+        </div>
+        <div className="flex flex-col mb-10">
+          {doctor.map((details) => (
+            <div
+              className="shadow-xl bg-white shadow-slate-400 border-b-4 border-blue-950 rounded-3xl mb-5 ml-[12%] mr-10 p-5 w-3/4 flex flex-row items-center"
+              key={details.name}
+            >
+              <div className="size-20 mr-5 rounded-3xl overflow-hidden">
+                <img
+                  className="w-full h-full object-cover"
+                  src={details.src}
+                  alt="No image"
+                />
+              </div>
+              <div className="flex flex-col flex-grow">
+                <div className="sm:text-xl text-sm:font-bold text-black">
+                  {details.name}
                 </div>
-
-                <div className=" mt-3 text-2xl from-stone-500 font-serif font-light leading-12 break-words text-slate-500">
-                  {docs.specialist}
+                <div className="mr-10 sm:text-3xl text-sm text-gray-500">
+                  {details.specialist}{" "}
                 </div>
               </div>
-              <div className="">
+              <div className="flex-shrink-0">
                 <img
-                  className="absolute transform translate-y-4 right-48 hidden md:block"
+                  className="sm:size-8 size-5 hover:cursor-pointer"
                   src="./Images/arrow.png"
+                  onClick={() => {
+                    window.location.href = "/Doctors";
+                  }}
                 />
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
-      <div className="font-bold text-blue-600 text-center mb-8">
-        See all Doctors near you
+        <div className="ml-[45%] mb-[2%]">
+          <p className="text-xl text-blue-500 font-semibold">See All Doctors</p>
+        </div>
       </div>
-      </>
-    );
+    </>
+  );
 }
-
 
 export default Docarray;
