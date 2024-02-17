@@ -20,7 +20,7 @@ function PatientDetails() {
   const id = open ? 'simple-popover' : undefined;
   const doctor = [
     {
-      name: "Sourav",
+      name: " Dr.Sourav",
         lastname: "Kumar",
       date:"17/12/2001",
       time: "05:00",
@@ -29,7 +29,7 @@ function PatientDetails() {
       src: "./Images/YoungMan.png",
     },
     {
-        name: "Sourav",
+        name: "Dr.Sourav",
           lastname: "Kumar",
         date:"17/12/2001",
         time:"05:00",
@@ -38,7 +38,7 @@ function PatientDetails() {
         src: "./Images/YoungMan.png",
       },
       {
-        name: "Sourav",
+        name: "Dr.Sourav",
           lastname: "Kumar",
         date:"17/12/2001",
         time:"05:00",
@@ -47,16 +47,16 @@ function PatientDetails() {
         src: "./Images/YoungMan.png",
       },
     {
-      name: "Yashraj",
+      name: "Dr.Yashraj",
         lastname: "Kumar",
       date:"17/12/2001",
       time:"05:00",
       
-      specialist: "Cardiology",
+      specialist: "dr>Cardiology",
       src: "./Images/YoungMan.png",
     },
     {
-      name: "Tathagat",
+      name: "Dr. Tathagat",
         lastname: "Kumar",
       date:"17/12/2001",
       time:"05:00",
@@ -80,18 +80,18 @@ function PatientDetails() {
               ></img>
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
-              Dr. Yashraj Srivastava
+               Yashraj Srivastava
             </div>
             <div className="flex justify-center p-3 font-thin font-serif text-gray-500">
-              MBBS, MS, MD, PhD
+              AIDS Patient
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
-              <span className="font-thin">ID-</span>
-              <b>SNJ24066998G</b>
+              <span className="font-thin">Age:</span>
+              <b>21 Years</b>
             </div>
-            <div className="flex justify-center p-3  font-serif ">
+            {/* <div className="flex justify-center p-3  font-serif ">
               Neurosurgeon
-            </div>
+            </div> */}
             <div className="flex justify-center">
               <button className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold ">
                 Update
