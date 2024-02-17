@@ -43,7 +43,9 @@ const ActiveSlider = () => {
                 <item.icon className="text-blue-600 group-hover:text-blue-400" />
                 <h1 className="text-xl lg:text-2xl">Neurology</h1>
                 <p className="lg:text-[18px]">{item.content} </p>
-                <button className='mt-8 bg-blue-800 py-1 rounded-full size-sm' onClick={()=>{}}>Book Now</button>
+                <button className='mt-8 bg-blue-800 py-1 rounded-full size-sm' onClick={()=>{
+                  window.location.href="/Disease"
+                }}>Book Now</button>
               </div>
               <RxArrowTopRight className="absolute bottom-5 left-5 text-white group-hover:text-blue-500 
               group-hover:rotate-45 duration-100" />

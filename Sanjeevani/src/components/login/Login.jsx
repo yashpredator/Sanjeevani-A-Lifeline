@@ -15,23 +15,23 @@ const Login = () => {
   }, []);
   return (
     <>
-      <div className="flex flex-row h-screen">
-        <div className="w-1/4">
+      <div className="flex flex-row">
+        <div className="w-1/5 bg-blue-800 h-screen">
         <img
-            className="transition-opacity duration-1000 ease-in-out opacity-100"
+            className="transition-opacity duration-1000 ease-in-out opacity-100 h-full w-full"
             src={(`./${currentImage}`)}
             alt=""
           />
         </div>
-        <div className="flex flex-col justify-center items-center w-3/4 mt-[-20px] ">
-          <div className="flex justify-center mb-12 mt-[-10px] hover:cursor-pointer" onClick={()=>{window.location.href = '/Home';}}>
-            <div className="w-1/6 mr-3 mt-[-110px]">
+        <div className="flex flex-col justify-center items-center w-3/4">
+          <div className="flex justify-center mb-[5%] hover:cursor-pointer" onClick={()=>{window.location.href = '/Home';}}>
+            <div className="w-1/6 mr-3 -mt-[21%]">
               <img src="./logosan.png" alt="No image" />
             </div>
 
             <div>
               <img
-                className="mt-[-98px] hover:cursor-pointer"
+                className="-mt-[27%] hover:cursor-pointer"
                 src="./Sanjeevani.png"
                 alt="No image"
 
@@ -39,7 +39,7 @@ const Login = () => {
               />
             </div>
           </div>
-          <div className="mt-[-10px] mb-10">
+          <div className="mb-[4%]">
             <div className="text-wrap text-4xl mt-[-40px] text-gray-500">
               Welcome to <b className="text-black">Sanjeevani</b>
             </div>
@@ -83,7 +83,9 @@ const Login = () => {
   </div>
   <div className="flex items-center justify-center mt-4">
     <div className="font-bold text-gray-700">
-      New to Sanjeevani? <a className="text-blue-400 font-bold" href="/">Register</a>
+      New to Sanjeevani? <span className="text-blue-400 font-bold hover:cursor-pointer" onClick={()=>{
+        window.location.href="/Signup"
+      }}>Signup</span>
     </div>
   </div>
 </form>

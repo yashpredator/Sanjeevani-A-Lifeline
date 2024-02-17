@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Booking = () => {
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
   return (
     <>
       <div className="bg-gradient-to-r from-violet-800 to-blue-900 ">
         <div className="flex flex-row">
           <div className=" mt-2 ml-3 size-14 hover:cursor-pointer">
-            <img src="./Images/whitelogo.png" alt="No logo" onClick={()=>{window.location.href = '/Home';}}/>
+            <img
+              src="./Images/whitelogo.png"
+              alt="No logo"
+              onClick={() => {
+                window.location.href = "/Home";
+              }}
+            />
           </div>
           <div className=" ml-3 mt-5 size-40 hover:cursor-pointer">
-            <img src="./Images/whitesanjeevani.png" onClick={()=>{window.location.href = '/Home';}}/>
+            <img
+              src="./Images/whitesanjeevani.png"
+              onClick={() => {
+                window.location.href = "/Home";
+              }}
+            />
           </div>
         </div>
         <div className="text-white text-5xl p-2 font-serif">
@@ -51,7 +69,8 @@ const Booking = () => {
                 </div>
               </div>
               <div className="mt-3 bg-purple-200 w-full">
-                <TextField className="w-full"
+                <TextField
+                  className="w-full"
                   id="filled-textarea"
                   label=""
                   placeholder="Any important medical condition"
@@ -71,11 +90,17 @@ const Booking = () => {
                 Book Now
               </Button>
             </div>
-            <div className="p-3 text-blue-800 mt-2" onClick={()=>{}}>
-              {/* <Button className=" bg-white" variant="contained" href="#contained-buttons">
-                Pick a date
-              </Button> */}
-              Pick a date
+            <div>
+             <div className="p-3 ml-2">
+             <DatePicker className="rounded-xl hover:cursor-pointer bg-blue-200 px-2 py-2"
+                selected={selectedDate}
+                onChange={handleDateChange}
+                dateFormat="MM/dd/yyyy"
+                isClearable
+                placeholderText="Pick a date"
+              />
+             </div>
+             
             </div>
           </div>
         </div>
