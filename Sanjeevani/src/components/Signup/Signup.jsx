@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Switch } from "@material-tailwind/react";
 
 function Copyright(props) {
   return (
@@ -52,7 +53,6 @@ export default function SignUp() {
     }
   };
 
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -69,7 +69,11 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar> */}
           <div className="mb-3">
-              <img className="size-16" src="./Images/logo.png" />
+            <img className="size-16" src="./Images/logo.png" />
+          </div>
+          <div className="space-x-8 mb-2">
+            <Switch label="" ripple={true} />
+            
           </div>
           <Typography component="h1" variant="h5">
             Sign up
@@ -92,7 +96,7 @@ export default function SignUp() {
                   autoFocus
                 />
               </Grid>
-              
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -122,7 +126,6 @@ export default function SignUp() {
                   label="Confirm Password"
                   type="Confirm password"
                   id="Confirm password"
-                  
                 />
               </Grid>
               <Grid item xs={12}>
