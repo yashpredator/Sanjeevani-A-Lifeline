@@ -12,6 +12,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
+import { Route } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -34,24 +36,36 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+  const [responseData, setResponseData] = React.useState(null);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const password = data.get("password");
     const confirmPassword = data.get("confirmPassword");
 
     if (password === confirmPassword) {
-      console.log({
-        email: data.get("email"),
-        password: data.get("password"),
-        confirmPassword: data.get("confirmPassword"),
-      });
       // Proceed with signup logic here
+      try {
+        axios
+          .post("http://localhost:3000/signup", {
+            // Your JSON parameters here
+            username: data.get("UserName"),
+            email: data.get("email"),
+            password: password,
+          })
+          .then((val) => {
+            //Logic of successful signup should be shown here/ or reroute to home page as soon as signup is completed
+            window.location.href = "/home";
+            console.log(val);
+          });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     } else {
       alert("Passwords do not match. Please check again.");
     }
   };
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -69,7 +83,7 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar> */}
           <div className="mb-3">
-              <img className="size-16" src="./Images/logo.png" />
+            <img className="size-16" src="./Images/logo.png" />
           </div>
           <Typography component="h1" variant="h5">
             Sign up
@@ -92,7 +106,7 @@ export default function SignUp() {
                   autoFocus
                 />
               </Grid>
-              
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -118,11 +132,10 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  name="confirmPassword"
                   label="Confirm Password"
-                  type="Confirm password"
+                  type="password"
                   id="Confirm password"
-                  
                 />
               </Grid>
               <Grid item xs={12}>
