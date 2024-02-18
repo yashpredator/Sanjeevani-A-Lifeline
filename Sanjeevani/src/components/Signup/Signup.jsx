@@ -41,8 +41,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const [responseData, setResponseData] = React.useState(null);
   const {storeToken} = useAuth();
+  const [checked, setChecked] = useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -52,8 +52,11 @@ export default function SignUp() {
     if (password === confirmPassword) {
       // Proceed with signup logic here
       try {
+        let url = "http://localhost:3000/signup"
+        checked == true ? url = "http://localhost:3000/doctor/signup" : url = "http://localhost:3000/signup"
+        
         axios
-          .post("http://localhost:3000/signup", {
+          .post(url, {
             // Your JSON parameters here
             username: data.get("UserName"),
             email: data.get("email"),
@@ -62,6 +65,9 @@ export default function SignUp() {
           .then((response) => {
             //Logic of successful signup should be shown here/ or reroute to home page as soon as signup is completed
             const token = response.data;
+            console.log(token);
+            localStorage.setItem('doctor',checked);
+            checked == true ? window.location.href = './Doctor-Profile' : window.location.href = './home'
             storeToken(token.token);
             // window.location.href = "/home";
           });
@@ -73,17 +79,10 @@ export default function SignUp() {
     }
   };
  
- 
- 
-  const [checked, setChecked] = useState(false);
-
-// <<<<<<< main
-// =======
   const handleChange = (val) => {
     setChecked(val);
   };
 
-// >>>>>>> main
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">

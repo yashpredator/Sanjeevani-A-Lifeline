@@ -35,10 +35,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      axios.post('http://localhost:3000/login', { username:user, password:pass }).then((response)=>{
+      let url = "http://localhost:3000/login"
+      checked == true ? url = "http://localhost:3000/doctor/login" : url = "http://localhost:3000/login"
+
+      axios.post(url, { username:user, password:pass }).then((response)=>{
         const token  = response.data;
         storeToken(token.token)
+        localStorage.setItem('doctor',checked);
         //Route to home page after successful login
+        checked == true ? window.location.href = './Doctor-Profile' : window.location.href = './home'
         // window.location.href = '/PatientDetails'
       }).catch((err)=>{console.log(err)});
       

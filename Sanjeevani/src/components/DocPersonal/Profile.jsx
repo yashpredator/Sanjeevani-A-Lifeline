@@ -1,10 +1,11 @@
 import React from "react";
 import DocNav from "./DocNav";
-import { Popover, Typography } from "@mui/material";
-
+import { Popover, Typography, useRadioGroup } from "@mui/material";
+import { useAuth } from "../../store/auth";
 const Profile = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  const {user} = useAuth();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -103,20 +104,22 @@ const Profile = () => {
               ></img>
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
-              Dr. Yashraj Srivastava
+              Dr. {user.name}
             </div>
             <div className="flex justify-center p-3 font-thin font-serif text-gray-500">
               MBBS, MS, MD, PhD
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
               <span className="font-thin">ID-</span>
-              <b>SNJ24066998G</b>
+              <b>{user.username}</b>
             </div>
             <div className="flex justify-center p-3  font-serif ">
-              Neurosurgeon
+              {user.specialization}
             </div>
             <div className="flex justify-center">
-              <button className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold ">
+              <button className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold " onClick={()=>{
+                window.location.href='/Doc-Reg'
+              }}>
                 Update
               </button>
             </div>

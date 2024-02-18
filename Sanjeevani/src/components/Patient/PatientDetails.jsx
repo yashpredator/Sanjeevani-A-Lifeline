@@ -96,7 +96,7 @@ function PatientDetails() {
               Neurosurgeon
             </div> */}
             <div className="flex justify-center">
-              <button className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold ">
+              <button onClick={()=>{window.location.href='./UserProfile'}} className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold ">
                 Update
               </button>
             </div>
