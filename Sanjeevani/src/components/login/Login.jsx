@@ -3,8 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Home from "../home/Home";
 import ReactSwitch from "react-switch";
+import { Router } from "react-router-dom";
+
 const Login = () => {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
 
   const handleChange = (val) => {
     setChecked(val);
@@ -39,7 +41,7 @@ const Login = () => {
             }}
           >
             <div className="w-1/6 mr-[3%] -mt-[21%]">
-              <img className="" src="./logosan.png" alt="No image" />
+              <img className="size-[85%]" src="./logosan.png" alt="No image" />
             </div>
 
             <div>
@@ -63,9 +65,9 @@ const Login = () => {
               Your one stop destination for finding{" "}
               <b className="text-black">doctors</b>
             </div>
-            <div className="app mt-4" style={{ textAlign: "center" }}>
-              <ReactSwitch checked={checked} onChange={handleChange} />
-              <span className="ml-[2%] text-2xl">Doctors Login</span>
+            <div className="app mt-4 flex flex-row" style={{ textAlign: "center" }}>
+              <ReactSwitch className="ml-[30%] mt-[0%]" checked={checked} onChange={handleChange} />
+              <span className="ml-[3%] text-lg text-blue-800 font-medium">For Doctor</span>
             </div>
           </div>
 
@@ -103,7 +105,10 @@ const Login = () => {
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
                 type="button"
                 onClick={() => {
-                  window.location.href = "/Home";
+                 
+                    window.location.href="/home"
+                  
+                 
                 }}
               >
                 Log In

@@ -12,7 +12,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Switch } from "@material-tailwind/react";
+
+import axios from "axios";
+import { Route } from "react-router-dom";
+import ReactSwitch from "react-switch";
+import { useState } from "react";
+
 
 function Copyright(props) {
   return (
@@ -35,24 +40,48 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+  const [responseData, setResponseData] = React.useState(null);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const password = data.get("password");
     const confirmPassword = data.get("confirmPassword");
 
     if (password === confirmPassword) {
-      console.log({
-        email: data.get("email"),
-        password: data.get("password"),
-        confirmPassword: data.get("confirmPassword"),
-      });
       // Proceed with signup logic here
+      try {
+        axios
+          .post("http://localhost:3000/signup", {
+            // Your JSON parameters here
+            username: data.get("UserName"),
+            email: data.get("email"),
+            password: password,
+          })
+          .then((val) => {
+            //Logic of successful signup should be shown here/ or reroute to home page as soon as signup is completed
+            window.location.href = "/home";
+            console.log(val);
+          });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     } else {
       alert("Passwords do not match. Please check again.");
     }
   };
+ 
+ 
+ 
+  const [checked, setChecked] = useState(false);
 
+// <<<<<<< main
+// =======
+  const handleChange = (val) => {
+    setChecked(val);
+  };
+
+// >>>>>>> main
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -68,13 +97,12 @@ export default function SignUp() {
           {/* <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar> */}
+
           <div className="mb-3">
+          <div className="mb-3 -mt-[8%]"></div>
             <img className="size-16" src="./Images/logo.png" />
           </div>
-          <div className="space-x-8 mb-2">
-            <Switch label="" ripple={true} />
-            
-          </div>
+          
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
@@ -122,9 +150,9 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  name="confirmPassword"
                   label="Confirm Password"
-                  type="Confirm password"
+                  type="password"
                   id="Confirm password"
                 />
               </Grid>
@@ -135,8 +163,16 @@ export default function SignUp() {
                   }
                   label="I want to receive updates and marketing promotions via email from Sanjeevani"
                 />
+                
               </Grid>
+             
+             
             </Grid>
+            <span className="app mt-4 flex flex-row" style={{ textAlign: "center" }}>
+              <ReactSwitch className="ml-[30%] mt-[0%]" checked={checked} onChange={handleChange} />
+              <span className="ml-[3%] text-lg text-blue-800 font-normal">For Doctor</span>
+            </span>
+
             <Button
               type="submit"
               fullWidth
