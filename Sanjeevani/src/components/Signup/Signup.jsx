@@ -53,6 +53,9 @@ export default function SignUp() {
       alert("Passwords do not match. Please check again.");
     }
   };
+ 
+ 
+ 
   const [checked, setChecked] = useState(false);
 
   const handleChange = (val) => {
