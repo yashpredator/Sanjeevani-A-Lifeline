@@ -12,7 +12,8 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Switch } from "@material-tailwind/react";
+import ReactSwitch from "react-switch";
+import { useState } from "react";
 
 function Copyright(props) {
   return (
@@ -52,6 +53,11 @@ export default function SignUp() {
       alert("Passwords do not match. Please check again.");
     }
   };
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (val) => {
+    setChecked(val);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -68,13 +74,10 @@ export default function SignUp() {
           {/* <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar> */}
-          <div className="mb-3">
+          <div className="mb-3 -mt-[8%]">
             <img className="size-16" src="./Images/logo.png" />
           </div>
-          <div className="space-x-8 mb-2">
-            <Switch label="" ripple={true} />
-            
-          </div>
+          
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
@@ -135,8 +138,16 @@ export default function SignUp() {
                   }
                   label="I want to receive updates and marketing promotions via email from Sanjeevani"
                 />
+                
               </Grid>
+             
+             
             </Grid>
+            <span className="app mt-4 flex flex-row" style={{ textAlign: "center" }}>
+              <ReactSwitch className="ml-[30%] mt-[0%]" checked={checked} onChange={handleChange} />
+              <span className="ml-[3%] text-lg text-blue-800 font-normal">For Doctor</span>
+            </span>
+
             <Button
               type="submit"
               fullWidth
