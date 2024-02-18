@@ -5,7 +5,15 @@ import axios from "axios";
 import { useAuth } from "../../store/auth";
 
 import Home from "../home/Home";
+import ReactSwitch from "react-switch";
+import { Router } from "react-router-dom";
+
 const Login = () => {
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = (val) => {
+    setChecked(val);
+  };
   const [currentImage, setCurrentImage] = useState("Doctor.png");
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
@@ -14,7 +22,9 @@ const Login = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       // Update the currentImage state to switch between images
-      setCurrentImage((prevImage) => (prevImage === "Doctor.png" ? "Mobile.jpeg" : "Doctor.png"));
+      setCurrentImage((prevImage) =>
+        prevImage === "Doctor.png" ? "Mobile.jpeg" : "Doctor.png"
+      );
     }, 5000);
 
     return () => clearInterval(interval); // Cleanup the interval on component unmount
@@ -44,16 +54,21 @@ const Login = () => {
     <>
       <div className="flex flex-row">
         <div className="w-1/5 bg-blue-800 h-screen">
-        <img
+          <img
             className="transition-opacity duration-1000 ease-in-out opacity-100 h-full w-full"
-            src={(`./${currentImage}`)}
+            src={`./${currentImage}`}
             alt=""
           />
         </div>
-        <div className="flex flex-col justify-center items-center w-3/4">
-          <div className="flex justify-center mb-[5%] hover:cursor-pointer" onClick={()=>{window.location.href = '/Home';}}>
-            <div className="w-1/6 mr-3 -mt-[21%]">
-              <img src="./logosan.png" alt="No image" />
+        <div className="flex flex-col justify-center items-center w-3/4 mt-[5%]">
+          <div
+            className="flex justify-center mb-[5%] hover:cursor-pointer w-1/2"
+            onClick={() => {
+              window.location.href = "/Home";
+            }}
+          >
+            <div className="w-1/6 mr-[3%] -mt-[21%]">
+              <img className="size-[85%]" src="./logosan.png" alt="No image" />
             </div>
 
             <div>
@@ -61,19 +76,25 @@ const Login = () => {
                 className="-mt-[27%] hover:cursor-pointer"
                 src="./Sanjeevani.png"
                 alt="No image"
-
-                onClick={()=>{window.location.href = '/Home';}}
+                onClick={() => {
+                  window.location.href = "/Home";
+                }}
               />
             </div>
           </div>
-          <div className="mb-[4%]">
-            <div className="text-wrap text-4xl mt-[-40px] text-gray-500">
+          <div className="mb-[4%] ml-[6%]">
+            <div className="text-wrap text-4xl -mt-[9%] text-gray-500">
               Welcome to <b className="text-black">Sanjeevani</b>
             </div>
           </div>
-          <div className="mt-[-20px] mb-8">
+          <div className="-mt-[3%] mb-8 ml-[6%]">
             <div className="text-wrap text-2xl font-thin font-serif text-gray-400">
-              Your one stop destination for finding <b className='text-black'>doctors</b>
+              Your one stop destination for finding{" "}
+              <b className="text-black">doctors</b>
+            </div>
+            <div className="app mt-4 flex flex-row" style={{ textAlign: "center" }}>
+              <ReactSwitch className="ml-[30%] mt-[0%]" checked={checked} onChange={handleChange} />
+              <span className="ml-[3%] text-lg text-blue-800 font-medium">For Doctor</span>
             </div>
           </div>
 
