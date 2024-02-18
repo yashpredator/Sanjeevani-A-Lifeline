@@ -12,8 +12,13 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import ReactSwitch from "react-switch";
-import { useState } from "react";
+// <<<<<<< main
+// import axios from "axios";
+// import { Route } from "react-router-dom";
+// =======
+// import ReactSwitch from "react-switch";
+// import { useState } from "react";
+// >>>>>>> main
 
 function Copyright(props) {
   return (
@@ -36,19 +41,32 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+  const [responseData, setResponseData] = React.useState(null);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const password = data.get("password");
     const confirmPassword = data.get("confirmPassword");
 
     if (password === confirmPassword) {
-      console.log({
-        email: data.get("email"),
-        password: data.get("password"),
-        confirmPassword: data.get("confirmPassword"),
-      });
       // Proceed with signup logic here
+      try {
+        axios
+          .post("http://localhost:3000/signup", {
+            // Your JSON parameters here
+            username: data.get("UserName"),
+            email: data.get("email"),
+            password: password,
+          })
+          .then((val) => {
+            //Logic of successful signup should be shown here/ or reroute to home page as soon as signup is completed
+            window.location.href = "/home";
+            console.log(val);
+          });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     } else {
       alert("Passwords do not match. Please check again.");
     }
@@ -58,10 +76,13 @@ export default function SignUp() {
  
   const [checked, setChecked] = useState(false);
 
-  const handleChange = (val) => {
-    setChecked(val);
-  };
+// <<<<<<< main
+// =======
+//   const handleChange = (val) => {
+//     setChecked(val);
+//   };
 
+// >>>>>>> main
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -77,7 +98,11 @@ export default function SignUp() {
           {/* <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar> */}
-          <div className="mb-3 -mt-[8%]">
+// <<<<<<< main
+//           <div className="mb-3">
+// =======
+//           <div className="mb-3 -mt-[8%]">
+// >>>>>>> main
             <img className="size-16" src="./Images/logo.png" />
           </div>
           
@@ -128,9 +153,9 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  name="confirmPassword"
                   label="Confirm Password"
-                  type="Confirm password"
+                  type="password"
                   id="Confirm password"
                 />
               </Grid>
