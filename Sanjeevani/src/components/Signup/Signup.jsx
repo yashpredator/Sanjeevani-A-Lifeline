@@ -12,13 +12,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-// <<<<<<< main
-// import axios from "axios";
-// import { Route } from "react-router-dom";
-// =======
-// import ReactSwitch from "react-switch";
-// import { useState } from "react";
-// >>>>>>> main
+
+import axios from "axios";
+import { Route } from "react-router-dom";
+import ReactSwitch from "react-switch";
+import { useState } from "react";
+
 
 function Copyright(props) {
   return (
@@ -78,9 +77,9 @@ export default function SignUp() {
 
 // <<<<<<< main
 // =======
-//   const handleChange = (val) => {
-//     setChecked(val);
-//   };
+  const handleChange = (val) => {
+    setChecked(val);
+  };
 
 // >>>>>>> main
   return (
@@ -98,11 +97,9 @@ export default function SignUp() {
           {/* <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar> */}
-// <<<<<<< main
-//           <div className="mb-3">
-// =======
-//           <div className="mb-3 -mt-[8%]">
-// >>>>>>> main
+
+          <div className="mb-3">
+          <div className="mb-3 -mt-[8%]"></div>
             <img className="size-16" src="./Images/logo.png" />
           </div>
           
