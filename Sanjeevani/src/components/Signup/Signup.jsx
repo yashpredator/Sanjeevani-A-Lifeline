@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { Route } from "react-router-dom";
+import { useAuth } from "../../store/auth";
 
 function Copyright(props) {
   return (
@@ -37,7 +38,7 @@ const theme = createTheme();
 
 export default function SignUp() {
   const [responseData, setResponseData] = React.useState(null);
-
+  const {storeToken} = useAuth();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -54,10 +55,11 @@ export default function SignUp() {
             email: data.get("email"),
             password: password,
           })
-          .then((val) => {
+          .then((response) => {
             //Logic of successful signup should be shown here/ or reroute to home page as soon as signup is completed
-            window.location.href = "/home";
-            console.log(val);
+            const token = response.data;
+            storeToken(token.token);
+            // window.location.href = "/home";
           });
       } catch (error) {
         console.error("Error fetching data:", error);
