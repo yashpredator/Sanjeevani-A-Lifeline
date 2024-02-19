@@ -1,10 +1,12 @@
 import { Option, Select } from "@material-tailwind/react";
 import { Avatar } from "@mui/material";
 import React from "react";
+import { useAuth } from "../../store/auth";
 
 import Dropdown from "./Dropdown";
 
 const Doctorreg = () => {
+  const {user} = useAuth();
   return (
     <>
     <div className="bg-gradient-to-r from-violet-600 via-white to-violet-300 ">
@@ -36,6 +38,7 @@ const Doctorreg = () => {
               <input
                 className="w-3/4 h-14 rounded-3xl text-xl bg-blue-100 pl-3"
                 type="text"
+                value={user.username}
                 placeholder="Doctor ID"
               ></input>
             </div>

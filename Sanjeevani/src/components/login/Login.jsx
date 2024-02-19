@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import axios from "axios";
+import { useAuth } from "../../store/auth";
+
 import Home from "../home/Home";
 import ReactSwitch from "react-switch";
 import { Router } from "react-router-dom";
@@ -12,6 +15,9 @@ const Login = () => {
     setChecked(val);
   };
   const [currentImage, setCurrentImage] = useState("Doctor.png");
+  const [user, setUser] = useState('');
+  const [pass, setPass] = useState('');
+  const {storeToken} = useAuth();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,6 +29,32 @@ const Login = () => {
 
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
+
+  
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      let url = "http://localhost:3000/login"
+      checked == true ? url = "http://localhost:3000/doctor/login" : url = "http://localhost:3000/login"
+
+      axios.post(url, { username:user, password:pass }).then((response)=>{
+        const token  = response.data;
+        storeToken(token.token)
+        localStorage.setItem('doctor',checked);
+        //Route to home page after successful login
+        checked == true ? window.location.href = './Doctor-Profile' : window.location.href = './home'
+        // window.location.href = '/PatientDetails'
+      }).catch((err)=>{console.log(err)});
+      
+      // console.log(response);
+      // setAuth(token);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-row">
@@ -71,63 +103,52 @@ const Login = () => {
             </div>
           </div>
 
-          <form className="-mt-[1%] w-6/12">
-            <div className="mb-4"> 
-              <label
-                className="block text-gray-700 text-sm font-bold"
-                htmlFor="username"
-              >
-                Username
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="username"
-                type="text"
-                placeholder="Enter your Name"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="password"
-              >
-                Password
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
-                type="password"
-                placeholder="Enter your password"
-              />
-            </div>
-            <div className="flex items-center justify-center mt-7">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
-                type="button"
-                onClick={() => {
-                 
-                    window.location.href="/home"
-                  
-                 
-                }}
-              >
-                Log In
-              </button>
-            </div>
-            <div className="flex items-center justify-center mt-4">
-              <div className="font-bold text-gray-700">
-                New to Sanjeevani?{" "}
-                <span
-                  className="text-blue-400 font-bold hover:cursor-pointer"
-                  onClick={() => {
-                    window.location.href = "/Signup";
-                  }}
-                >
-                  Signup
-                </span>
-              </div>
-            </div>
-          </form>
+  <form onSubmit={handleSubmit} className="mt-4 w-6/12">
+  <div className="mb-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+      Username
+    </label>
+    <input
+      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      id="username"
+      type="text"
+      placeholder="Enter your Name"
+      name="username"
+      onChange={(e) => setUser(e.target.value)}
+      required
+    />
+  </div>
+  <div className="mb-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+      Password
+    </label>
+    <input
+      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      id="password"
+      type="password"
+      placeholder="Enter your password"
+      name="password"
+      onChange={(e) => setPass(e.target.value)}
+      required
+    />
+  </div>
+  <div className="flex items-center justify-center mt-7">
+    <button
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+      type="submit"
+    >
+      Log In
+    </button>
+  </div>
+  <div className="flex items-center justify-center mt-4">
+    <div className="font-bold text-gray-700">
+      New to Sanjeevani? <span className="text-blue-400 font-bold hover:cursor-pointer" onClick={()=>{
+        window.location.href="/Signup"
+      }}>Signup</span>
+    </div>
+  </div>
+</form>
+
         </div>
       </div>
     </>
