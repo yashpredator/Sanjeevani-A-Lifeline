@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -9,6 +10,7 @@ const Booking = () => {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+  const navigate=useNavigate();
   return (
     <>
       <div className="bg-gradient-to-r from-violet-800 to-blue-900 ">
@@ -18,7 +20,7 @@ const Booking = () => {
               src="./Images/whitelogo.png"
               alt="No logo"
               onClick={() => {
-                window.location.href = "/Home";
+                navigate("/Home")
               }}
             />
           </div>
@@ -26,7 +28,7 @@ const Booking = () => {
             <img
               src="./Images/whitesanjeevani.png"
               onClick={() => {
-                window.location.href = "/Home";
+                navigate("/Home")
               }}
             />
           </div>

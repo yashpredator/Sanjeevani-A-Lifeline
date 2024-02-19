@@ -7,8 +7,12 @@ import { useAuth } from "../../store/auth";
 import Home from "../home/Home";
 import ReactSwitch from "react-switch";
 import { Router } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Login = () => {
+  const navigate=useNavigate();
   const [checked, setChecked] = useState(false);
 
   const handleChange = (val) => {
@@ -43,7 +47,7 @@ const Login = () => {
         storeToken(token.token)
         localStorage.setItem('doctor',checked);
         //Route to home page after successful login
-        checked == true ? window.location.href = './Doctor-Profile' : window.location.href = './home'
+        checked == true ? navigate("/Doctor-Profile") : navigate("/Home")
         // window.location.href = '/PatientDetails'
       }).catch((err)=>{console.log(err)});
       
@@ -69,7 +73,7 @@ const Login = () => {
           <div
             className="flex justify-center mb-[5%] hover:cursor-pointer w-1/2"
             onClick={() => {
-              window.location.href = "/Home";
+              navigate("/Home");
             }}
           >
             <div className="w-1/6 mr-[3%] -mt-[21%]">
@@ -143,7 +147,7 @@ const Login = () => {
   <div className="flex items-center justify-center mt-4">
     <div className="font-bold text-gray-700">
       New to Sanjeevani? <span className="text-blue-400 font-bold hover:cursor-pointer" onClick={()=>{
-        window.location.href="/Signup"
+        navigate("/Signup")
       }}>Signup</span>
     </div>
   </div>

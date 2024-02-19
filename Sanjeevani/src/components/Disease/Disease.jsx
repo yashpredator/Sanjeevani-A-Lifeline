@@ -1,32 +1,35 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Disease = () => {
   const doctora = [
     {
-      name: "Sourav",
+      name: "Sourav Kumar",
       lastname: "Kumar",
       specialist: "Neuroscience",
       src: "./Doctor.png",
     },
     {
-      name: "Yash",
+      name: "Yash Kumar",
       lastname: "Kumar",
       specialist: "Cardiology",
       src: "./Doctor.png",
     },
     {
-      name: "Tathagat",
+      name: "Tathagat Kumar",
       lastname: "Kumar",
       specialist: "Surgeon",
       src: "./Doctor.png",
     },
     {
-      name: "Priya",
+      name: "Priya Kumar",
       lastname: "Kumar",
       specialist: "Gynecologist",
       src: "./Doctor.png",
     },
   ];
+
+  const navigate=useNavigate();
 
   return (
     <div className="bg-gradient-to-r from-violet-800 to-blue-900  overflow-y-auto">
@@ -41,49 +44,45 @@ const Disease = () => {
       <div className="text-white text-5xl p-2 font-serif">NEUROSCIENCE</div>
 
       <div className="flex flex-row">
-        <div className="w-3/4 bg-blue-100 mt-12">
-          {doctora.map((docs) => (
-            <div className="flex flex-col  mt-6" key={docs.name}>
-              <div className="mb-8 ">
-                <div className="relative flex flex-row bg-slate-100 rounded-br-3xl rounded-tr-3xl rounded-bl-3xl rounded-tl-3xl py-4 px-4 ml-12 mr-44">
-                  <div className="flex flex-row justify-between w-full">
-                    <div className="flex flex-row">
-                      <div>
-                        <img
-                          className="md:rounded-full h-36 w-36 ml-10"
-                          src={docs.src}
-                          alt="Doctor Avatar"
-                        />
-                      </div>
-                      <div className="flex flex-col ml-8 ">
-                        <div className="mt-2 flex flex-col lg:flex-row  text-black text-5xl font-inter font-light leading-76 break-words ">
-                          <div>{docs.name}</div>
-                          <div className="text-xl hidden text-black sm:text-5xl font-inter font-semibold break-words ml-4 md:block">
-                            {docs.lastname}
-                          </div>
-                        </div>
-
-                        <div className=" mt-3 text-2xl from-stone-500 font-serif font-light leading-12 break-words text-slate-500">
-                          {docs.specialist}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute right-0 mr-5 mt-5">
-                      <img
-                        className="md:block"
-                        src="./Images/arrow.png"
-                        alt="Arrow"
-                      />
-                    </div>
-                  </div>
-                </div>
+        <div className="w-3/4 bg-blue-100 mt-8">
+          {doctora.map((details) => (
+            <div
+            className="shadow-xl bg-white shadow-slate-400 border-b-4 border-blue-950 rounded-3xl mb-5 sm:ml-[5%] p-5 w-[85%] flex flex-row items-center mt-10 font-medium hover:cursor-pointer ml-[10%]"
+            key={details.name}
+            onClick={()=>{
+                navigate("/Book-your-Doctor")
+            }}
+          >
+            <div className="sm:size-20 sm:mr-[2%] ml-[1%] rounded-3xl overflow-hidden size-14">
+              <img
+                className="sm:w-full sm:h-full object-cover rounded-full "
+                src={details.src}
+                alt="No image"
+              />
+            </div>
+            <div className="flex flex-col flex-grow">
+              <div className="sm:text-xl text-sm:font-bold text-black">
+                {details.name}
+              </div>
+              <div className="mr-10 sm:text-3xl text-sm text-gray-500">
+                {details.specialist}{" "}
               </div>
             </div>
-          ))}
-        </div>
+            <div className="flex-shrink-0">
+              <img
+                className="sm:size-8 size-5 hover:cursor-pointer"
+                src="./Images/arrow.png"
+                onClick={() => {
+                  navigate("/Book-your-Doctor")
+                }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
 
         <div className="w-1/4 bg-blue-100">
-          <div className="flex flex-col -mt-24">
+          <div className="flex flex-col -mt-[32%] mr-10">
             <div className="w-fit">
               <img  className="w-full" src="./Images/Brain.png" alt="Brain" />
             </div>

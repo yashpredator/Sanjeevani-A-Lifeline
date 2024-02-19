@@ -146,13 +146,16 @@ function PatientDetails() {
                             open={open}
                             anchorEl={anchorEl}
                             onClose={handleClose}
+                            // className="hover:cursor-pointer"
                             anchorOrigin={{
                               vertical: "bottom",
                               horizontal: "left",
+                              
                             }}
+
                           >
                             <div className="flex flex-col sm:w-60 sm:h-60 w-24 h-24 rounded-full">
-                              <div className="w-full h-2/6 bg-blue-600">
+                              <div className="w-full h-2/6 bg-blue-600 hover:">
                                 <div className="sm:mt-8 ml-1 mb-1 sm:font-bold text-white sm:text-xl font-normal text-xs mt:1">
                                   Patient Record
                                 </div>
