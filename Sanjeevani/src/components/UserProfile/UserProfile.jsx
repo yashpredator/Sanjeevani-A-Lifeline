@@ -1,6 +1,10 @@
 import React from 'react'
+import { useAuth } from "../../store/auth";
 
 function UserProfile() {
+
+    const {user} = useAuth();
+
     return (
         <div className="flex justify-center items-center overflow-auto overflow-y-auto bg-pink-300">
             <div className="w-full max-w-md bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6">
@@ -16,23 +20,18 @@ function UserProfile() {
                 </div>
                 <form>
                
-                    <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="first-name">
-                            First Name
-                        </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="first-name" type="text" placeholder="First Name" />
-                    </div>
+                    
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="last-name">
-                            Last Name
+                            Name
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="last-name" type="text" placeholder="Last Name" />
+                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={user.name} id="last-name" type="text" placeholder="Last Name" />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                             Email
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" />
+                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" value={user.email} type="email" placeholder="Email" />
                     </div>
                     <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sex">
@@ -49,7 +48,7 @@ function UserProfile() {
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="age">
                             Age
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="age" type="number" placeholder="Age" />
+                        <input value={user.age} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="age" type="number" placeholder="Age" />
                     </div>
                     <div className="mb-4">
                        
