@@ -155,7 +155,7 @@ export default function SignUp() {
                   type="password"
                   id="Confirm password"
                 />
-              </Grid>
+ +             </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
                   control={

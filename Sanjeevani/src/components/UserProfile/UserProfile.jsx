@@ -4,13 +4,16 @@ function UserProfile() {
     return (
         <div className="flex justify-center items-center overflow-auto overflow-y-auto bg-pink-300">
             <div className="w-full max-w-md bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6">
+                <div className="flex flex-col justify-center">
             <div className='flex flex-row justify-center overflow-auto -mt-1'>
                     
                     <img className="size-16" src='./Images/logo.png'/>
                     
                 </div>
-                <h2 className="text-3xl mb-6 mt-5 ml-16">Welcome New User</h2>
-                
+                <div className="mx-auto">
+                <h2 className="sm:text-3xl mb-6 mt-5 text-xl">Welcome New User</h2>
+                </div>
+                </div>
                 <form>
                
                     <div className="mb-4">
@@ -39,6 +42,7 @@ function UserProfile() {
                             <option value="">Select</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
+                            <option value="others">Others</option>
                         </select>
                     </div>
                      <div className="mb-4">
@@ -57,7 +61,7 @@ function UserProfile() {
                     <div className="mb-4">
                        
                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="Locality">
-                         Locatlity
+                         Locality
                      </label>
                      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Locality" type="text" placeholder="Locality" />
                  </div>
