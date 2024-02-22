@@ -1,11 +1,11 @@
 import React from "react";
 import DocNav from "./DocNav";
 import { Popover, Typography, useRadioGroup } from "@mui/material";
-import { useAuth } from "../../store/auth";
+// import { useAuth } from "../../store/auth";
 const Profile = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const {user} = useAuth();
+  // const {user} = useAuth();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
