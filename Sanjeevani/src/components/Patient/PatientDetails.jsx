@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@mui/material";
 import PatientNav from "./PatientNav";
 import { Popover, Typography } from "@mui/material";
 import axios from "axios";
-import { useAuth } from "../../store/auth";
+import { useGetProfileQuery } from "../../app/features/patient/PatientApiSlice";
+import { useSelector } from "react-redux";
 
 function PatientDetails() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const payload = {
+    user: "AnujPrerna",
+  };
+  const { data, status } = useGetProfileQuery(payload);
 
-  const {user} = useAuth();
-
+  useEffect(() => {
+    if (data) {
+      console.log(data);
+    }
+  }, [data]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,53 +30,54 @@ function PatientDetails() {
   const open = Boolean(anchorEl);
 
   const id = open ? "simple-popover" : undefined;
-  const doctor = [
-    {
-      name: " Dr.Sourav",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "05:00",
+  const doctor = useSelector(state => state.patient.appointments);
+  // const doctor = [
+  //   {
+  //     name: " Dr.Sourav",
+  //     lastname: "Kumar",
+  //     date: "17/12/2001",
+  //     time: "05:00",
 
-      specialist: "Neuroscience",
-      src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Dr.Sourav",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "05:00",
+  //     specialist: "Neuroscience",
+  //     src: "./Images/YoungMan.png",
+  //   },
+  //   {
+  //     name: "Dr.Sourav",
+  //     lastname: "Kumar",
+  //     date: "17/12/2001",
+  //     time: "05:00",
 
-      specialist: "Neuroscience",
-      src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Dr.Sourav",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "05:00",
+  //     specialist: "Neuroscience",
+  //     src: "./Images/YoungMan.png",
+  //   },
+  //   {
+  //     name: "Dr.Sourav",
+  //     lastname: "Kumar",
+  //     date: "17/12/2001",
+  //     time: "05:00",
 
-      specialist: "Neuroscience",
-      src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Dr.Yashraj",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "05:00",
+  //     specialist: "Neuroscience",
+  //     src: "./Images/YoungMan.png",
+  //   },
+  //   {
+  //     name: "Dr.Yashraj",
+  //     lastname: "Kumar",
+  //     date: "17/12/2001",
+  //     time: "05:00",
 
-      specialist: "dr>Cardiology",
-      src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Dr. Tathagat",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "05:00",
+  //     specialist: "dr>Cardiology",
+  //     src: "./Images/YoungMan.png",
+  //   },
+  //   {
+  //     name: "Dr. Tathagat",
+  //     lastname: "Kumar",
+  //     date: "17/12/2001",
+  //     time: "05:00",
 
-      specialist: "Surgeon",
-      src: "./Images/YoungMan.png",
-    },
-  ];
+  //     specialist: "Surgeon",
+  //     src: "./Images/YoungMan.png",
+  //   },
+  // ];
   return (
     <>
       <PatientNav />
@@ -83,7 +92,8 @@ function PatientDetails() {
               ></img>
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
-              {user.username}
+              {/* Yashraj0 */}
+              {data?.username}
             </div>
             <div className="flex justify-center p-3 font-thin font-serif text-gray-500">
               AIDS Patient
@@ -96,7 +106,12 @@ function PatientDetails() {
               Neurosurgeon
             </div> */}
             <div className="flex justify-center">
-              <button onClick={()=>{window.location.href='./UserProfile'}} className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold ">
+              <button
+                onClick={() => {
+                  window.location.href = "./UserProfile";
+                }}
+                className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold "
+              >
                 Update
               </button>
             </div>
@@ -107,7 +122,7 @@ function PatientDetails() {
             Appointments
           </div>
           <div className="lg:h-[90vh] h-[70vh] overflow-y-auto">
-            {doctor.map(({ name, lastname, date, time, speacialist, src }) => (
+            {doctor?.map(({ name, lastname, date, time, speacialist, src }) => (
               <div className="flex flex-col mb-3 ">
                 <div className="flex flex-col px-6 ">
                   <div className=" flex flex-row rounded-3xl border-r-8 border-b-8">
@@ -150,9 +165,7 @@ function PatientDetails() {
                             anchorOrigin={{
                               vertical: "bottom",
                               horizontal: "left",
-                              
                             }}
-
                           >
                             <div className="flex flex-col sm:w-60 sm:h-60 w-24 h-24 rounded-full">
                               <div className="w-full h-2/6 bg-blue-600 hover:">

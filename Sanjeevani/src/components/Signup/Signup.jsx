@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import axios from "axios";
 import { Route } from "react-router-dom";
-import { useAuth } from "../../store/auth";
+// import { useAuth } from "../../store/auth";
 import ReactSwitch from "react-switch";
 import { useState } from "react";
 
@@ -41,7 +41,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const {storeToken} = useAuth();
+  // const {storeToken} = useAuth();
   const [checked, setChecked] = useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault();

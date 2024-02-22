@@ -1,9 +1,8 @@
 import React from 'react'
-import { useAuth } from "../../store/auth";
 
 function UserProfile() {
 
-    const {user} = useAuth();
+
 
     return (
         <div className="flex justify-center items-center overflow-auto overflow-y-auto bg-pink-300">
@@ -48,7 +47,7 @@ function UserProfile() {
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="age">
                             Age
                         </label>
-                        <input value={user.age} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="age" type="number" placeholder="Age" />
+                        <input value="69" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="age" type="number" placeholder="Age" />
                     </div>
                     <div className="mb-4">
                        

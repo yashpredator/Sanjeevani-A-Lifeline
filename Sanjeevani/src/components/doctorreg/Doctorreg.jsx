@@ -1,12 +1,12 @@
 import { Option, Select } from "@material-tailwind/react";
 import { Avatar } from "@mui/material";
 import React from "react";
-import { useAuth } from "../../store/auth";
+// import { useAuth } from "../../store/auth";
 
 import Dropdown from "./Dropdown";
 
 const Doctorreg = () => {
-  const {user} = useAuth();
+  // const {user} = useAuth();
   return (
     <>
     <div className="bg-gradient-to-r from-violet-600 via-white to-violet-300 ">
