@@ -1,21 +1,36 @@
 import { Option, Select } from "@material-tailwind/react";
 import { Avatar } from "@mui/material";
 import React from "react";
+import { useSelector } from "react-redux";
 // import { useAuth } from "../../store/auth";
+import { useRegisterMutation } from "../../app/features/doctor/doctorApiSlice";
 
 import Dropdown from "./Dropdown";
 
 const Doctorreg = () => {
   // const {user} = useAuth();
+  const user = useSelector((state) => state.patient);
+  const [registerDoc, { isSuccess }] = useRegisterMutation();
+  const handleRegister = () => {
+    registerDoc({})
+  };
   return (
     <>
-    <div className="bg-gradient-to-r from-violet-600 via-white to-violet-300 ">
-        
+      <div className="bg-gradient-to-r from-violet-600 via-white to-violet-300 ">
         <div className="flex flex-row h-44 mx-auto items-center justify-center">
-          <div> <img className="h-24 w-11/12" src="./logosan.png" alt="No logo" /></div>
-          <div> <img className="ml-5 h-16" src="./Sanjeevani.png" alt="No image"/> </div>
+          <div>
+            {" "}
+            <img className="h-24 w-11/12" src="./logosan.png" alt="No logo" />
+          </div>
+          <div>
+            {" "}
+            <img
+              className="ml-5 h-16"
+              src="./Sanjeevani.png"
+              alt="No image"
+            />{" "}
+          </div>
         </div>
-        
       </div>
       <div className="text-center text-3xl p-6 font-serif">
         Welcome to Sanjeevani-<b>Doctors Portal</b>
@@ -38,7 +53,7 @@ const Doctorreg = () => {
               <input
                 className="w-3/4 h-14 rounded-3xl text-xl bg-blue-100 pl-3"
                 type="text"
-                value={user.username}
+                value={user?.name}
                 placeholder="Doctor ID"
               ></input>
             </div>
@@ -62,11 +77,14 @@ const Doctorreg = () => {
               <input
                 className="w-3/4 h-14 rounded-3xl text-xl bg-blue-100 pl-3"
                 type="text"
-                placeholder="Address"
+                placeholder="Specialization"
               ></input>
             </div>
             <div className="mt-5">
-              <button className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold">
+              <button
+                className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold"
+                onClick={handleRegister}
+              >
                 Register
               </button>
             </div>
@@ -96,7 +114,6 @@ const Doctorreg = () => {
           </div>
           <div className="relative rounded-md shadow-sm mt-5">
             <textarea
-            
               id="aboutMe"
               className=" bg-blue-100 form-input py-3 px-4 block w-full transition ease-in-out duration-150 sm:text-sm sm:leading-5 resize-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 border-gray-300 rounded-md"
               placeholder="A little bit about yourself..."

@@ -2,32 +2,32 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Disease = () => {
-  const doctora = [
-    {
-      name: "Sourav Kumar",
-      lastname: "Kumar",
-      specialist: "Neuroscience",
-      src: "./Doctor.png",
-    },
-    {
-      name: "Yash Kumar",
-      lastname: "Kumar",
-      specialist: "Cardiology",
-      src: "./Doctor.png",
-    },
-    {
-      name: "Tathagat Kumar",
-      lastname: "Kumar",
-      specialist: "Surgeon",
-      src: "./Doctor.png",
-    },
-    {
-      name: "Priya Kumar",
-      lastname: "Kumar",
-      specialist: "Gynecologist",
-      src: "./Doctor.png",
-    },
-  ];
+  // const doctora = [
+  //   {
+  //     name: "Sourav Kumar",
+  //     lastname: "Kumar",
+  //     specialist: "Neuroscience",
+  //     src: "./Doctor.png",
+  //   },
+  //   {
+  //     name: "Yash Kumar",
+  //     lastname: "Kumar",
+  //     specialist: "Cardiology",
+  //     src: "./Doctor.png",
+  //   },
+  //   {
+  //     name: "Tathagat Kumar",
+  //     lastname: "Kumar",
+  //     specialist: "Surgeon",
+  //     src: "./Doctor.png",
+  //   },
+  //   {
+  //     name: "Priya Kumar",
+  //     lastname: "Kumar",
+  //     specialist: "Gynecologist",
+  //     src: "./Doctor.png",
+  //   },
+  // ];
 
   const navigate=useNavigate();
 

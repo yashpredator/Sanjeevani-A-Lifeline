@@ -4,13 +4,13 @@ import patientReducer from "./features/patient/patientSlice";
 
 export const store = configureStore({
   reducer: {
-    // [apiSlice.reducerPath]: apiSlice.reducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
     patient: patientReducer,
   },
 
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(apiSlice.middleware),
-  // devTools: true,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
+  devTools: true,
 });
 
 export default store;

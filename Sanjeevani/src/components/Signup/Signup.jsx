@@ -18,7 +18,8 @@ import { Route } from "react-router-dom";
 // import { useAuth } from "../../store/auth";
 import ReactSwitch from "react-switch";
 import { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { setPatient } from "../../app/features/patient/patientSlice";
 
 function Copyright(props) {
   return (
@@ -42,6 +43,7 @@ const theme = createTheme();
 
 export default function SignUp() {
   // const {storeToken} = useAuth();
+  const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -62,6 +64,12 @@ export default function SignUp() {
             email: data.get("email"),
             password: password,
           })
+          // .then(()=>{
+          //   dispatch({
+          //     name: username,
+          //     doctor: true
+          //   })
+          // })
           .then((response) => {
             //Logic of successful signup should be shown here/ or reroute to home page as soon as signup is completed
             const token = response.data;

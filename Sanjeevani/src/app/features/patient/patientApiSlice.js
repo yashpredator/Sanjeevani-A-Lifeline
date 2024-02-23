@@ -14,7 +14,18 @@ export const patientApiSlice = apiSlice.injectEndpoints({
         };
       },
     }),
+    getAppointments: builder.query({
+      query: (payload) => {
+        const qstr = Object.keys(payload).map(
+          (key) =>
+            `${encodeURIComponent(key)}=${encodeURIComponent(payload[key])}`
+        );
+        return {
+          url: `/book?${qstr}`,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetProfileQuery } = patientApiSlice;
+export const { useGetProfileQuery, useLazyGetProfileQuery, useGetAppointmentsQuery } = patientApiSlice;

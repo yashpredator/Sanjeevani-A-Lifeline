@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: "A",
-  age: 1,
-  // appointments: [],
+  name: "",
+  age: "",
+  doctor: false,
+  appointments: [],
 };
 
 const patientSlice = createSlice({
@@ -11,10 +12,10 @@ const patientSlice = createSlice({
   initialState,
   reducers: {
     setPatient: (state, action) => {
-      console.log(action.payload);
-      state = action.payload
-      // state = {...state, ...action.payload};
-      // state.age++;
+      const {name, age, doctor} = action.payload;
+      state.name = name;
+      state.age = age;
+      state.doctor = doctor;
     },
     addAppointments: (state, action) => {
       state.appointments = [...state.appointments, action.payload];

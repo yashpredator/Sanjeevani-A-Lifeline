@@ -10,10 +10,12 @@ import { Router } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setPatient } from "../../app/features/patient/patientSlice";
+import { useLazyGetProfileQuery } from "../../app/features/patient/PatientApiSlice";
 
 const Login = () => {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
+  const [trigger, { data, status }] = useLazyGetProfileQuery();
 
   const handleChange = (val) => {
     setChecked(val);
@@ -34,37 +36,44 @@ const Login = () => {
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
 
+  useEffect(() => {
+    if (status == "fulfilled") dispatch(setPatient(data));
+  }, [data]);
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // try {
-    //   let url = "http://localhost:3000/login";
-    //   checked == true
-    //     ? (url = "http://localhost:3000/doctor/login")
-    //     : (url = "http://localhost:3000/login");
+    try {
+      let url = "http://localhost:3000/login";
+      checked == true
+        ? (url = "http://localhost:3000/doctor/login")
+        : (url = "http://localhost:3000/login");
 
-    //   axios
-    //     .post(url, { username: user, password: pass })
-    //     .then((response) => {
-    //       console.log(response);
-    //       const token = response.data;
-    //       // storeToken(token.token);
-    //       localStorage.setItem("doctor", checked);
-    //       //Route to home page after successful login
-    //       // checked == true ? navigate("/Doctor-Profile") : navigate("/Home");
-    //       // window.location.href = '/PatientDetails'
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
+      axios
+        .post(url, { username: user, password: pass })
+        .then((response) => {
+          console.log(response);
+          const token = response.data;
+          // storeToken(token.token);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
-    //   // console.log(response);
-    //   // setAuth(token);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    dispatch(setPatient({ user: user, age: 16}));
+      trigger({ user: user }).then(() => {
+        localStorage.setItem("doctor", checked);
+        // Route to home page after successful login
+        checked == true ? navigate("/Doctor-Profile") : navigate("/Home");
+
+        // navigate("/PatientDetails");
+      });
+
+      // console.log(response);
+      // setAuth(token);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
