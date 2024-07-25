@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Popover } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
 const settings = ["XNXX", "Dashboard", "Logout"];
 
 function DocNav() {

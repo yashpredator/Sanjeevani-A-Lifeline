@@ -12,11 +12,13 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const settings = ["Profile", "Dashboard", "Logout"];
 
 function Home() {
+  const navigate=useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -37,9 +39,9 @@ function Home() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:8800/doctor/logout");
-      localStorage.setItem("currentUser", null);
-      navigate("/Home");
+      await axios.post("http://localhost:8800/doctor/logout",{},{ withCredentials: true });
+      localStorage.removeItem('currentUser');
+      // navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -147,6 +149,7 @@ function Home() {
                           window.location.href = "/";
                           break;
                         case "Logout":
+                          console.log(69);
                           handleLogout(); // Call handleLogout function
                           break;
                         default:
