@@ -52,9 +52,9 @@ export default function SignUp() {
     if (password === confirmPassword) {
       // Proceed with signup logic here
       try {
-        let url = "http://localhost:3000/signup"
-        checked == true ? url = "http://localhost:3000/doctor/signup" : url = "http://localhost:3000/signup"
-        
+        // let url = "http://localhost:8800/signup"
+        // checked == true ? url = "http://localhost:8800/doctor/signup" : url = "http://localhost:8800/signup"
+        let url="http://localhost:8800/doctor/signup"
         axios
           .post(url, {
             // Your JSON parameters here

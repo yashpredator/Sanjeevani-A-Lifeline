@@ -14,9 +14,10 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Popover } from "@mui/material";
 
-const settings = ["Profile", "Dashboard", "Logout"];
+const settings = ["XNXX", "Dashboard", "Logout"];
 
 function DocNav() {
+  const navigate= useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -39,6 +40,19 @@ function DocNav() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  const handleLogout=async()=>{
+    try{
+      await axios.post("http://localhost:8800/doctor/logout");
+      localStorage.setItem("currentUser", null);
+      navigate("/Home");
+      
+    }
+    catch(err){
+      console.log(err);
+
+    }
+  }
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -283,11 +297,16 @@ function DocNav() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {settings.map((setting) => (
+                  {/* {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
+                      <Typography textAlign="center">{settings}</Typography>
                     </MenuItem>
-                  ))}
+                  ))} */}
+                  <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">Profile</Typography>
+                      <Typography textAlign="center">Dashboard</Typography>
+                      <Typography textAlign="center" onClick={handleLogout}>Logout</Typography>
+                    </MenuItem>
                 </Menu>
               </Box>
             </Toolbar>

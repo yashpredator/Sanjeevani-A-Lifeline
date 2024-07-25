@@ -15,12 +15,12 @@ const Login = () => {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
 
-  const handleChange = (val) => {
-    setChecked(val);
-  };
   const [currentImage, setCurrentImage] = useState("Doctor.png");
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
+  const handleChange = (val) => {
+    setChecked(val);
+  };
   // const {storeToken} = useAuth();
 
   useEffect(() => {
@@ -36,35 +36,29 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // try {
-    //   let url = "http://localhost:3000/login";
-    //   checked == true
-    //     ? (url = "http://localhost:3000/doctor/login")
-    //     : (url = "http://localhost:3000/login");
+    try {
+      // let url = "http://localhost:8800/login";
+      // checked == true
+      //   ? (url = "http://localhost:8800/doctor/login")
+      //   : (url = "http://localhost:8800/login");
+      let url = "http://localhost:8800/doctor/login";
 
-    //   axios
-    //     .post(url, { username: user, password: pass })
-    //     .then((response) => {
-    //       console.log(response);
-    //       const token = response.data;
-    //       // storeToken(token.token);
-    //       localStorage.setItem("doctor", checked);
-    //       //Route to home page after successful login
-    //       // checked == true ? navigate("/Doctor-Profile") : navigate("/Home");
-    //       // window.location.href = '/PatientDetails'
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
+      const res =await axios.post(url, { username: user, password: pass },{ withCredentials: true });
+      console.log(res);
+      console.log(5)
 
-    //   // console.log(response);
-    //   // setAuth(token);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    dispatch(setPatient({ user: user, age: 16}));
+      localStorage.setItem("currentUser", JSON.stringify(res.data));
+      navigate("/Home");
+
+      // console.log(response);
+      // setAuth(token);
+    } catch (err) {
+      console.log(err);
+      console.log(69)
+    }
+    // dispatch(setPatient({ user: user, age: 16 }));
   };
 
   return (

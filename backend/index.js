@@ -6,12 +6,15 @@ const app = express();
 const cookieParser=require("cookie-parser")
 // const userRouter=require("../sanjeevani_backend/src/routes/patient/user.js");
 // const doctorRouter=require("../sanjeevani_backend/src/routes/doctor/admin.js");
+const doctorRouter=require("../backend/routes/doctor/admin.js");
+const userRouter=require("../backend/routes/patient/user.js");
+
 const cors = require('cors');
 //db connection
 // const {notFound,errorHandler}=require("../sanjeevani_backend/src/middleware/apierror.js")
 const connect=async()=>{
     try{
-        await mongoose.connect("mongodb+srv://yashrajsrivastava555:yashraj123@cluster0.labbyuu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+        await mongoose.connect("mongodb+srv://yashrajsrivastava555:yashraj123@cluster0.labbyuu.mongodb.net/?retryWrites=true&w=majority&dbName=Sanjeevani");
         console.log("Connected to MongoDB");
     }
     catch(err){
@@ -24,7 +27,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
 // app.use(userRouter);
-// app.use(doctorRouter);
+app.use(doctorRouter);
 
 app.listen(8800,()=>{
     connect();

@@ -35,6 +35,16 @@ function Home() {
     setAnchorElUser(null);
   };
 
+  const handleLogout = async () => {
+    try {
+      await axios.post("http://localhost:8800/doctor/logout");
+      localStorage.setItem("currentUser", null);
+      navigate("/Home");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
    <>
    <div className="flex flex-col">
@@ -125,8 +135,8 @@ function Home() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={()=>{
+                   {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={() => {
                       handleCloseUserMenu();
                       // Redirect based on the setting
                       switch (setting) {
@@ -137,10 +147,7 @@ function Home() {
                           window.location.href = "/";
                           break;
                         case "Logout":
-                          // Perform logout operation, e.g., clearing session or local storage
-                          // Then redirect to the login page
-                          // For demonstration, let's assume direct redirection
-                          window.location.href = "/";
+                          handleLogout(); // Call handleLogout function
                           break;
                         default:
                           // Handle default case, if necessary

@@ -38,7 +38,8 @@ const Doctorreg = () => {
               <input
                 className="w-3/4 h-14 rounded-3xl text-xl bg-blue-100 pl-3"
                 type="text"
-                value={user.username}
+                // value={user.username}
+                // value="Doc Sahab"
                 placeholder="Doctor ID"
               ></input>
             </div>
