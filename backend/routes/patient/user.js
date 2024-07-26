@@ -5,9 +5,9 @@ const user=require("../../controllers/patient/user.js");
 
 const router = express.Router();
 const { 
-    authUser,
+    loginPatient,
     signup,
-    logoutUser,
+    logoutPatient,
     getUserProfile,
     updateUserProfile,
     addPatientToDoctor
@@ -18,9 +18,9 @@ const {safety} = require("../../middleware/auth.js");
 const { getProfile } = require("../../controllers/doctor/admin.js");
 
 router.post('/signup',signup);
-router.post('/login', authUser);
+router.post('/login',loginPatient);
 // router.post('/register',registerUser);
-router.post('/logout', logoutUser);
+router.post('/logout', logoutPatient);
 router.post('/book',addPatientToDoctor);
 router.post('/review',safety,user.reviewProfile);
 // router.get('/',(req,res)=>{

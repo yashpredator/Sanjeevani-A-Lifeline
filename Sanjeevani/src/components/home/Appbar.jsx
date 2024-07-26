@@ -41,7 +41,7 @@ function Home() {
     try {
       await axios.post("http://localhost:8800/doctor/logout",{},{ withCredentials: true });
       localStorage.removeItem('currentUser');
-      // navigate("/");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }

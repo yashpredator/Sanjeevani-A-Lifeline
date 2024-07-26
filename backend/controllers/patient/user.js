@@ -3,65 +3,74 @@
 // import generateToken from '../utils/generateToken.js';
 const asyncHandler = require("express-async-handler");
 const User = require("../../models/patient/user.js");
-const Doctor = require("../../models/doctor/admin.js");
-const generateToken = require("../../utils/generateToken.js");
 const AppointmentD = require("../../models/connection/appointments.js");
 const AppointmentP = require("../../models/connection/appointments.js");
 const Review = require("../../models/connection/reviews.js");
 const bcrypt = require("bcrypt");
+const jwt=require("jsonwebtoken");
 
-const authUser = asyncHandler(async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    if (!user) return res.status(404).json({ mssg: "Not found" });
+const loginPatient= async(req,res,next)=>{
+  try{
+  const user = await User.findOne({ username: req.body.username });
 
-    const isMatch = await user.matchPassword(password);
+  if (!user) return res.status(404).send("User not found")
+   
 
-    console.log(isMatch);
+  const isCorrect = bcrypt.compareSync(req.body.password, user.password);
+  console.log(isCorrect);
+  if (!isCorrect)
+    return res.status(400).send("Password would be wrong");
 
-    if (isMatch) {
-      const token = generateToken(res, user._id);
-      res.json({
-        token,
-      });
-    } else {
-      res.status(400).json({ error: "Password not matched" });
-    }
-  } catch (err) {
-    res.status(401).json({ error: err.message });
-  }
-});
-
-const signup = asyncHandler(async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-    await User.findOne({ email });
-    const user = await User.create({
-      username,
-      email,
-      password,
-    });
-    const token = generateToken(res, user._id);
-    res.status(201).json({
-      token,
-    });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
-
-const logoutUser = asyncHandler(async (req, res) => {
-  try {
-    res.cookie("jwt", "", {
+  const token = jwt.sign(
+    {
+      id: user._id,
+      // isSeller: user.isSeller,
+      isDoctor:user.doctor,
+    },
+    'abc123',
+  );
+  console.log(token);
+  console.log(66)
+  const { password, ...info } = user._doc;
+  res
+    .cookie("accessToken", token, {
       httpOnly: true,
-      expires: new Date(0),
+      secure: true,
+      
+    })
+    
+    return res.status(200).json({ ...info, token });
+} catch (err) {
+  console.error('Error during login:', err);
+  next(err);
+}
+}
+
+const signup = async (req, res, next) => {
+  try {
+    const hash = bcrypt.hashSync(req.body.password, 5);
+    console.log(hash);
+    const newUser = new User({
+      ...req.body,
+      password: hash,
     });
-    res.status(200).json({ message: "logged out" });
+
+    await newUser.save();
+    res.status(201).send("User has been created.");
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    next(err);
   }
-});
+};
+
+const logoutPatient = async(req,res)=>{
+  
+  res.clearCookie("accessToken",{
+    sameSite:"none",
+    secure:true,
+  });
+  console.log("Logout kar raha hu")
+  return res.status(200).send("User has been successfully logged out");
+}
 
 const getUserProfile = asyncHandler(async (req, res) => {
   try {
@@ -212,9 +221,9 @@ const getAppointmentP = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-  authUser,
+  loginPatient,
   signup,
-  logoutUser,
+  logoutPatient,
   getUserProfile,
   updateUserProfile,
   reviewProfile,

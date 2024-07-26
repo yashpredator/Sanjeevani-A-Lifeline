@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const patientSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  doctor: { type: Boolean, required: true, default: false },
+  doctor: { type: Boolean, required: false, default: false },
   name: { type: String, required: false, default:"" },
   age: { type: Number, required: false,default:0 },
   address: { type: String, required: false,default:"" },

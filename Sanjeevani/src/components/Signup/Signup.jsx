@@ -52,16 +52,15 @@ export default function SignUp() {
     if (password === confirmPassword) {
       // Proceed with signup logic here
       try {
-        // let url = "http://localhost:8800/signup"
-        // checked == true ? url = "http://localhost:8800/doctor/signup" : url = "http://localhost:8800/signup"
-        let url="http://localhost:8800/doctor/signup"
+        let url =
+        checked == true ?"http://localhost:8800/doctor/signup" :  "http://localhost:8800/signup" ;
         axios
           .post(url, {
             // Your JSON parameters here
             username: data.get("UserName"),
             email: data.get("email"),
             password: password,
-          })
+          },{withCredentials: true})
           .then((response) => {
             //Logic of successful signup should be shown here/ or reroute to home page as soon as signup is completed
             const token = response.data;

@@ -39,11 +39,9 @@ const Login = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-      // let url = "http://localhost:8800/login";
-      // checked == true
-      //   ? (url = "http://localhost:8800/doctor/login")
-      //   : (url = "http://localhost:8800/login");
-      let url = "http://localhost:8800/doctor/login";
+      let url =
+      checked == true?"http://localhost:8800/doctor/login":"http://localhost:8800/login";
+  
 
       const res =await axios.post(url, { username: user, password: pass },{ withCredentials: true });
       console.log(res);

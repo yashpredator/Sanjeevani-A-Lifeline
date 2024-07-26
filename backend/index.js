@@ -26,7 +26,7 @@ app.use(cors({origin:"http://localhost:5173",credentials:true}));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
-// app.use(userRouter);
+app.use(userRouter);
 app.use(doctorRouter);
 
 app.listen(8800,()=>{
