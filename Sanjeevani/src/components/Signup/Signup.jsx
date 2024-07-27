@@ -56,7 +56,6 @@ export default function SignUp() {
         checked == true ?"http://localhost:8800/doctor/signup" :  "http://localhost:8800/signup" ;
         axios
           .post(url, {
-            // Your JSON parameters here
             username: data.get("UserName"),
             email: data.get("email"),
             password: password,

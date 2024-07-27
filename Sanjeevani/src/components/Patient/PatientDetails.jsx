@@ -4,20 +4,20 @@ import PatientNav from "./PatientNav";
 import { Popover, Typography } from "@mui/material";
 import axios from "axios";
 import { useGetProfileQuery } from "../../app/features/patient/PatientApiSlice";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 function PatientDetails() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const payload = {
-    user: "AnujPrerna",
-  };
-  const { data, status } = useGetProfileQuery(payload);
+  // const payload = {
+  //   user: "AnujPrerna",
+  // };
+  // const { data, status } = useGetProfileQuery(payload);
 
-  useEffect(() => {
-    if (data) {
-      console.log(data);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     console.log(data);
+  //   }
+  // }, [data]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -30,54 +30,54 @@ function PatientDetails() {
   const open = Boolean(anchorEl);
 
   const id = open ? "simple-popover" : undefined;
-  const doctor = useSelector(state => state.patient.appointments);
-  // const doctor = [
-  //   {
-  //     name: " Dr.Sourav",
-  //     lastname: "Kumar",
-  //     date: "17/12/2001",
-  //     time: "05:00",
+  // const doctor = useSelector(state => state.patient.appointments);
+  const doctor = [
+    {
+      name: " Dr.Sourav",
+      lastname: "Kumar",
+      date: "17/12/2001",
+      time: "05:00",
 
-  //     specialist: "Neuroscience",
-  //     src: "./Images/YoungMan.png",
-  //   },
-  //   {
-  //     name: "Dr.Sourav",
-  //     lastname: "Kumar",
-  //     date: "17/12/2001",
-  //     time: "05:00",
+      specialist: "Neuroscience",
+      src: "./Images/YoungMan.png",
+    },
+    {
+      name: "Dr.Sourav",
+      lastname: "Kumar",
+      date: "17/12/2001",
+      time: "05:00",
 
-  //     specialist: "Neuroscience",
-  //     src: "./Images/YoungMan.png",
-  //   },
-  //   {
-  //     name: "Dr.Sourav",
-  //     lastname: "Kumar",
-  //     date: "17/12/2001",
-  //     time: "05:00",
+      specialist: "Neuroscience",
+      src: "./Images/YoungMan.png",
+    },
+    {
+      name: "Dr.Sourav",
+      lastname: "Kumar",
+      date: "17/12/2001",
+      time: "05:00",
 
-  //     specialist: "Neuroscience",
-  //     src: "./Images/YoungMan.png",
-  //   },
-  //   {
-  //     name: "Dr.Yashraj",
-  //     lastname: "Kumar",
-  //     date: "17/12/2001",
-  //     time: "05:00",
+      specialist: "Neuroscience",
+      src: "./Images/YoungMan.png",
+    },
+    {
+      name: "Dr.Yashraj",
+      lastname: "Kumar",
+      date: "17/12/2001",
+      time: "05:00",
 
-  //     specialist: "dr>Cardiology",
-  //     src: "./Images/YoungMan.png",
-  //   },
-  //   {
-  //     name: "Dr. Tathagat",
-  //     lastname: "Kumar",
-  //     date: "17/12/2001",
-  //     time: "05:00",
+      specialist: "dr>Cardiology",
+      src: "./Images/YoungMan.png",
+    },
+    {
+      name: "Dr. Tathagat",
+      lastname: "Kumar",
+      date: "17/12/2001",
+      time: "05:00",
 
-  //     specialist: "Surgeon",
-  //     src: "./Images/YoungMan.png",
-  //   },
-  // ];
+      specialist: "Surgeon",
+      src: "./Images/YoungMan.png",
+    },
+  ];
   return (
     <>
       <PatientNav />
@@ -92,8 +92,9 @@ function PatientDetails() {
               ></img>
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
-              {/* Yashraj0 */}
-              {data?.username}
+              Yashraj0
+              {/* {data?.username} */}
+
             </div>
             <div className="flex justify-center p-3 font-thin font-serif text-gray-500">
               AIDS Patient

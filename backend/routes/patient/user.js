@@ -23,9 +23,7 @@ router.post('/login',loginPatient);
 router.post('/logout', logoutPatient);
 router.post('/book',addPatientToDoctor);
 router.post('/review',safety,user.reviewProfile);
-// router.get('/',(req,res)=>{
-//     // res.send("Not found login")
-// })
+
 router.get('/book',user.getAppointmentP); //It is defined
 router.get('/review',getProfile); //It is defined 
 // router.get('/doc)

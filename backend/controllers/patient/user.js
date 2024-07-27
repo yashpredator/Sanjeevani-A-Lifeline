@@ -14,12 +14,12 @@ const loginPatient= async(req,res,next)=>{
   const user = await User.findOne({ username: req.body.username });
 
   if (!user) return res.status(404).send("User not found")
-   
 
-  const isCorrect = bcrypt.compareSync(req.body.password, user.password);
-  console.log(isCorrect);
-  if (!isCorrect)
-    return res.status(400).send("Password would be wrong");
+ 
+  // const isCorrect = bcrypt.compareSync(req.body.password, user.password);
+  // console.log(isCorrect);
+  // if (!isCorrect)
+  //   return res.status(400).send("Password would be wrong");
 
   const token = jwt.sign(
     {

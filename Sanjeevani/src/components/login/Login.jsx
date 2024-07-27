@@ -43,7 +43,7 @@ const Login = () => {
       checked == true?"http://localhost:8800/doctor/login":"http://localhost:8800/login";
   
 
-      const res =await axios.post(url, { username: user, password: pass },{ withCredentials: true });
+      const res=await axios.post(url, { username: user, password: pass },{ withCredentials: true });
       console.log(res);
       console.log(5)
 

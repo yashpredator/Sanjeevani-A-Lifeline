@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Popover } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-const settings = ["XNXX", "Dashboard", "Logout"];
+const settings = ["Profile", "Dashboard", "Logout"];
 
 function DocNav() {
   const navigate= useNavigate();
