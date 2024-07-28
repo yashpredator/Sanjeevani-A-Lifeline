@@ -16,10 +16,10 @@ const appointmentSchema = new Schema({
     type: Date,
     required: true,
   },
-  appointment_time: {
-    type: String,
-    required: true,
-  },
+//   appointment_time: {
+//     type: String,
+//     required: true,
+//   },
   
   created_at: {
     type: Date,
@@ -38,5 +38,6 @@ appointmentSchema.pre("save", function (next) {
 });
 
 const Appointment = mongoose.model("appointment", appointmentSchema);
+// const Appointment = mongoose.models.appointment || mongoose.model("appointment", appointmentSchema);
 
 module.exports = Appointment;

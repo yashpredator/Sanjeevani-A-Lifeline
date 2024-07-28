@@ -8,6 +8,7 @@ const cookieParser=require("cookie-parser")
 // const doctorRouter=require("../sanjeevani_backend/src/routes/doctor/admin.js");
 const doctorRouter=require("../backend/routes/doctor/admin.js");
 const userRouter=require("../backend/routes/patient/user.js");
+const appointmentRouter=require("../backend/routes/appointment.js");
 
 const cors = require('cors');
 //db connection
@@ -28,7 +29,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(userRouter);
 app.use(doctorRouter);
-
+app.use(appointmentRouter);
 app.listen(8800,()=>{
     connect();
     console.log("Backend is up and running")

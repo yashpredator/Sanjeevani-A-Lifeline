@@ -19,6 +19,6 @@ const appointmentSchema = new Schema({
 });
 
 // Create a Doctor model using the schema
-const AppointmentD = mongoose.model('appointment', appointmentSchema);
+const AppointmentD = mongoose.model('appointmentos', appointmentSchema);
 
 module.exports = AppointmentD;
