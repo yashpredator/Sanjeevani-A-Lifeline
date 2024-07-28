@@ -34,7 +34,7 @@ const Login = () => {
     return () => clearInterval(interval); // Cleanup the interval on component unmount
   }, []);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleSubmit = async(e) => {
     e.preventDefault();

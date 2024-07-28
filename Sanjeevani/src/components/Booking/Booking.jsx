@@ -24,7 +24,7 @@ const Booking = () => {
         username,
         appointment_date: selectedDate,
         age,
-        sex,
+        sex,   
         medical_condition: medicalCondition,
       });
 
